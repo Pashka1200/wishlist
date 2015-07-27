@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="table.User" table="user">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="facebookId" type="java.lang.Integer">
+            <column name="facebook_id" unique="true" />
+        </property>
+
+    </class>
+
+    <sql-query name="findUserByFacebookId">
+        <return alias="id" class="table.User"/>
+        <![CDATA[SELECT u FROM User u WHERE u.facebookId = :facebook_id]]>
+    </sql-query>
+</hibernate-mapping>
