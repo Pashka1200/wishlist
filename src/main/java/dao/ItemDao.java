@@ -1,11 +1,9 @@
 package dao;
 
-import dao.InterfaseDao;
 import dao.impl.ClassDao;
 import general.Factory;
 import table.Item;
 import table.Reserve;
-import table.User;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,8 +20,6 @@ public class ItemDao<T> extends ClassDao<T> {
     }
 
     InterfaseDao interfaseDaoForItem = factory.getInerfaseDao(Item.class);
-    InterfaseDao interfaseDaoForReserves = factory.getInerfaseDao(Reserve.class);
-    InterfaseDao interfaseDaoForUser = factory.getInerfaseDao(User.class);
 
     //call this method for receive list of items (client or friends)
     public List<Item> getItems(int facebook_id) throws SQLException{
@@ -39,7 +35,7 @@ public class ItemDao<T> extends ClassDao<T> {
     //add new item to the item table
     //call addConnection in ReserveDao
     public String addMyItem(int facebook_id, String title,
-                            String url, String description) throws  SQLException{
+                            String url, String description, String picture) throws  SQLException{
 
         Item item = new Item();
 
@@ -47,6 +43,7 @@ public class ItemDao<T> extends ClassDao<T> {
         item.setTitle(title);
         item.setUrl(url);
         item.setDescription(description);
+        item.setPicture(picture);
         interfaseDaoForItem.add(item);
 
         new ReserveDao(Reserve.class).addConnection(facebook_id, item.getId());
@@ -55,12 +52,13 @@ public class ItemDao<T> extends ClassDao<T> {
     }
 
     //update some item in the table item
-    public String updateMyItems(int item_id, String title, String url, String description) throws  SQLException{
+    public String updateMyItems(int item_id, String title, String url, String description, String picture) throws  SQLException{
         Item item = new Item();
         item = (Item) interfaseDaoForItem.get(item_id);
         item.setTitle(title);
         item.setUrl(url);
         item.setDescription(description);
+        item.setPicture(picture);
         interfaseDaoForItem.update(item);
         return "true";
     }

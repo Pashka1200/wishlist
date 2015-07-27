@@ -8,10 +8,7 @@ import org.hibernate.Session;
 import table.User;
 import util.HibernateUtil;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * Created by pavlo on 20.07.15.
@@ -43,6 +40,7 @@ public class UserDao<T> extends ClassDao<T> {
 
         User newUser = new User();
         newUser.setFacebookId(facebook_id);
+        newUser.setDate_of_birth(date_of_birth);
         if (findOneByFacebookId(facebook_id) == null) {
             interfaseDao.add(newUser);
             return "new";

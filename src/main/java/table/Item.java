@@ -24,6 +24,10 @@ public class Item {
     @Column(name="description")
     private  String description;
 
+    @Column(name="picture")
+    private  String picture;
+
+
     public void setId(int id) {
         this.id = id;
     }
@@ -40,6 +44,11 @@ public class Item {
         this.description = description;
     }
 
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+
     public int getId() {
         return id;
     }
@@ -55,4 +64,9 @@ public class Item {
     public String getDescription() {
         return description;
     }
+
+    public String getPicture() {
+        return picture;
+    }
+
 }

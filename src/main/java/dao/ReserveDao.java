@@ -1,6 +1,5 @@
 package dao;
 
-import dao.InterfaseDao;
 import dao.impl.ClassDao;
 import general.Factory;
 import org.hibernate.Query;
@@ -11,7 +10,6 @@ import table.User;
 import util.HibernateUtil;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +24,7 @@ public class ReserveDao<T> extends ClassDao<T> {
 
     InterfaseDao interfaseDao = factory.getInerfaseDao(Reserve.class);
 
+    //get wish list by facebook id
     public List<Reserve> findReservesByFacebookId(int facebook_id) throws SQLException{
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
@@ -39,7 +38,7 @@ public class ReserveDao<T> extends ClassDao<T> {
     //use this method when you want to DELETE interconnected user-item connection
     //for deleting item in item table
     //this method call delMyItem(item_id) from ItemDao
-    public String delBuyItem(int facebook_id, int item_id) throws SQLException {
+    public String delBuyItem(int item_id) throws SQLException {
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesByItemId");

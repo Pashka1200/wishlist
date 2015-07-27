@@ -23,7 +23,7 @@ public class Project {
     public static void main(String[] args) throws SQLException {
 
 
-       // UserDao userDao = new UserDao(User.class);
+        UserDao userDao = new UserDao(User.class);
 //
 //        System.out.println(userManipulation.checkUser(1212, "1993-07-12"));
 //
@@ -40,8 +40,8 @@ public class Project {
 //            System.out.println(item.getTitle());
 //        }
 
-        ItemDao itemDao = new ItemDao(Item.class);
-       ReserveDao reserveDao = new ReserveDao(Reserve.class);
+//        ItemDao itemDao = new ItemDao(Item.class);
+//       ReserveDao reserveDao = new ReserveDao(Reserve.class);
 
 //        List<Item> items = itemDao.getItems(1001);
 //        for (Item item : items) {
@@ -55,7 +55,7 @@ public class Project {
 
        // InterfaseDao interfaseDaoUser = factory.getInerfaseDao(User.class);
 
-//        System.out.println(userDao.findByFacebookId(1003));
+        System.out.println(userDao.findByFacebookId(1003));
         //System.out.println(userDao.checkUser(3333, "12-12-1212"));
 //        System.out.println(userDao.updateUser(1234, 4321));
 

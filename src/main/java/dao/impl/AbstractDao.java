@@ -2,10 +2,8 @@ package dao.impl;
 
 import dao.InterfaseDao;
 import org.hibernate.Session;
-import table.User;
 import util.HibernateUtil;
 
-import javax.persistence.EntityManager;
 import java.sql.SQLException;
 import java.util.List;
 

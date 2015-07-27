@@ -30,6 +30,10 @@ public class User {
     @PrimaryKeyJoinColumn
     private User user;
 
+    @Column(name="date_of_birth")
+    private String date_of_birth;
+
+
     public int getId() {
         return id;
     }
@@ -37,6 +41,11 @@ public class User {
     public int getFacebookId() {
         return facebookId;
     }
+
+    public String getDate_of_birth() {
+        return date_of_birth;
+    }
+
 
     public void setId(int id) {
         this.id = id;
@@ -46,18 +55,7 @@ public class User {
         this.facebookId = facebookId;
     }
 
-
-
-
-
-//    @Column(name="vk_id", unique = true)
-//    private int vkontakteId;
-//
-//    public void setVkontakteId(int vkontakteId) {
-//            this.vkontakteId = vkontakteId;
-//    }
-//
-//    public int getVkontakteId() {
-//        return vkontakteId;
-//    }
+    public void setDate_of_birth(String date_of_birth) {
+        this.date_of_birth = date_of_birth;
+    }
 }
