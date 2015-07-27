@@ -27,8 +27,9 @@ CREATE TABLE `item` (
   `title` varchar(255) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `description` blob,
+  `picture` mediumblob,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +38,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (8,'lenovo s920','http://rozetka.com.ua/lenovo_s920_white/p297663/','New phone lenovo s920 for you!'),(10,'GoPro','http://rozetka.com.ua/gopro_hero4_black_standard_edition/p1639142/','GoPRO 4'),(11,'GoPro','http://rozetka.com.ua/gopro_hero4_black_standard_edition/p1639142/','GoPRO 4'),(12,'Sony Vegas','','Action camera'),(14,'GoPro','http://rozetka.com.ua/gopro_hero4_black_standard_edition/p1639142/','GoPRO 4'),(15,'LG','','New LG phone'),(16,'iPhone','','iPhone 6'),(17,'iPhone','','iPhone 6');
+INSERT INTO `item` VALUES (8,'lenovo s920','http://rozetka.com.ua/lenovo_s920_white/p297663/','New phone lenovo s920 for you!',NULL),(10,'GoPro','http://rozetka.com.ua/gopro_hero4_black_standard_edition/p1639142/','GoPRO 4',NULL),(11,'GoPro','http://rozetka.com.ua/gopro_hero4_black_standard_edition/p1639142/','GoPRO 4',NULL),(12,'Sony Vegas','','Action camera',NULL),(16,'iPhone','','iPhone 6',NULL),(20,'iPhone 5S','','iPhone 5S',NULL),(21,'Sony','','Xperia Z',NULL),(23,'iPhone 5S','','iPhone 5S',NULL);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,12 +54,13 @@ CREATE TABLE `reserve` (
   `client_id` int(11) NOT NULL,
   `buyer_id` int(11) DEFAULT NULL,
   `item_id` int(11) NOT NULL,
+  `is_buy` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `client_id` (`client_id`),
   KEY `item_id` (`item_id`),
   CONSTRAINT `reserve_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `reserve_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +69,7 @@ CREATE TABLE `reserve` (
 
 LOCK TABLES `reserve` WRITE;
 /*!40000 ALTER TABLE `reserve` DISABLE KEYS */;
-INSERT INTO `reserve` VALUES (6,13,13,8),(12,13,NULL,14),(15,10,NULL,17);
+INSERT INTO `reserve` VALUES (16,10,NULL,23,0);
 /*!40000 ALTER TABLE `reserve` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +85,7 @@ CREATE TABLE `user` (
   `fb_id` int(11) NOT NULL,
   `date_of_birth` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +94,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (10,1001,NULL),(11,1002,NULL),(12,1003,NULL),(13,1007,NULL),(15,1515,NULL),(48,1212,NULL),(49,1234,NULL);
+INSERT INTO `user` VALUES (10,1001,NULL),(11,1002,NULL),(12,1003,NULL),(13,1007,NULL),(15,1515,NULL),(48,1212,NULL),(49,1234,NULL),(50,2222,NULL),(51,3333,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -105,4 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-25 18:26:12
+-- Dump completed on 2015-07-27 13:48:32
