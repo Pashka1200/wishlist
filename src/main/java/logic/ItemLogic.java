@@ -1,8 +1,10 @@
 package logic;
 
 import dao.ItemDao;
+import dao.ReserveDao;
 import org.codehaus.jettison.json.JSONObject;
 import table.Item;
+import table.Reserve;
 
 import java.util.List;
 
@@ -16,9 +18,12 @@ public class ItemLogic {
     private JSONObject jsonObject1 = new JSONObject();
     private Item item;
 
+    ItemDao itemDao = new ItemDao(Item.class);
+    ReserveDao reserveDao = new ReserveDao(Reserve.class);
+
     public String getItemList(int page, int facebook_id) {
         try {
-            list = new ItemDao(Item.class).getItems(facebook_id);
+            list = itemDao.getItems(facebook_id);
 
             if (list.isEmpty())
             {

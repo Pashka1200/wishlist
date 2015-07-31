@@ -34,7 +34,7 @@ public class ItemDao<T> extends ClassDao<T> {
 
     //add new item to the item table
     //call addConnection in ReserveDao
-    public String addMyItem(int facebook_id, String title,
+    public int addMyItem(int facebook_id, String title,
                             String url, String description, String picture) throws  SQLException{
 
         Item item = new Item();
@@ -48,9 +48,9 @@ public class ItemDao<T> extends ClassDao<T> {
 
         new ReserveDao(Reserve.class).addConnection(facebook_id, item.getId());
 
-        return "true " + item.getId();
+        return item.getId();
     }
-    public String addMyItem(int facebook_id, String title,
+    public int addMyItem(int facebook_id, String title,
                             String url, String description) throws  SQLException{
 
         Item item = new Item();
@@ -63,7 +63,7 @@ public class ItemDao<T> extends ClassDao<T> {
 
         new ReserveDao(Reserve.class).addConnection(facebook_id, item.getId());
 
-        return "true " + item.getId();
+        return item.getId();
     }
 
     //update some item in the table item
