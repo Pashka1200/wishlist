@@ -1,6 +1,5 @@
 package dao;
 
-import dao.InterfaseDao;
 import dao.impl.ClassDao;
 import general.Factory;
 import org.hibernate.Query;
@@ -53,24 +52,4 @@ public class UserDao<T> extends ClassDao<T> {
     public void deleteUser(int facebook_id) throws SQLException{
         interfaseDao.delete(findOneByFacebookId(facebook_id));
       }
-
-
-
-
-
-
-
-
-
-
-    //find id by facebook id
-    public int findByFacebookId(int facebook_id) throws SQLException{
-        Session session = null;
-        session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.getNamedQuery("findUserByFacebookId");
-        query.setInteger("facebook_id", facebook_id);
-        int id = (Integer) query.uniqueResult();
-        return id;
-    }
-
 }

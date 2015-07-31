@@ -50,9 +50,25 @@ public class ItemDao<T> extends ClassDao<T> {
 
         return "true " + item.getId();
     }
+    public String addMyItem(int facebook_id, String title,
+                            String url, String description) throws  SQLException{
+
+        Item item = new Item();
+
+        //add item with received title, url and description
+        item.setTitle(title);
+        item.setUrl(url);
+        item.setDescription(description);
+        interfaseDaoForItem.add(item);
+
+        new ReserveDao(Reserve.class).addConnection(facebook_id, item.getId());
+
+        return "true " + item.getId();
+    }
 
     //update some item in the table item
-    public String updateMyItems(int item_id, String title, String url, String description, String picture) throws  SQLException{
+    public String updateMyItems(int item_id, String title,
+                            String url, String description, String picture) throws  SQLException{
         Item item = new Item();
         item = (Item) interfaseDaoForItem.get(item_id);
         item.setTitle(title);
