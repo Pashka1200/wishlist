@@ -40,7 +40,7 @@ public class UserDao<T> extends ClassDao<T> {
 
         User newUser = new User();
         newUser.setFacebookId(facebook_id);
-        newUser.setDate_of_birth(date_of_birth);
+        //newUser.setDate_of_birth(date_of_birth);
         if (findOneByFacebookId(facebook_id) == null) {
             interfaseDao.add(newUser);
             return "new";

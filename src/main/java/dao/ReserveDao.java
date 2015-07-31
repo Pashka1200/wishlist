@@ -76,7 +76,7 @@ public class ReserveDao<T> extends ClassDao<T> {
     }
 
     //delete buyer id and set NULL into buyer_id field
-    public String dellBuyer (int item_id) throws SQLException {
+    public String delBuyer (int item_id) throws SQLException {
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesByItemId");

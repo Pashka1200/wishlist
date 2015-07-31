@@ -55,7 +55,7 @@ public class Project {
 
        // InterfaseDao interfaseDaoUser = factory.getInerfaseDao(User.class);
 
-        System.out.println(userDao.findByFacebookId(1003));
+//        System.out.println(userDao.findByFacebookId(1003));
         //System.out.println(userDao.checkUser(3333, "12-12-1212"));
 //        System.out.println(userDao.updateUser(1234, 4321));
 
@@ -66,7 +66,7 @@ public class Project {
 
        // System.out.println(reserveDao.delBuyItem(1001,22));
         //System.out.println(reserveDao.addBuyer(23,1003));
-//        System.out.println(reserveDao.dellBuyer(23));
+//        System.out.println(reserveDao.delBuyer(23));
 //        System.out.println(reserveDao.checkBuyer(23));
 //        System.out.println(reserveDao.isBuyed(23, 0));
 //        System.out.println(reserveDao.checkIsBuy(23));

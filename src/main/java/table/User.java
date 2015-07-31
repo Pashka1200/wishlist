@@ -9,9 +9,6 @@ import javax.persistence.*;
 @Entity
 @Table(name="user")
 @NamedQueries({
-        @NamedQuery(name = "findUserByFacebookId",
-                query = "SELECT u.id " +
-                        "FROM User u WHERE u.facebookId = :facebook_id"),
         @NamedQuery(name = "findOneUserByFacebookId",
         query = "SELECT u " +
                 "FROM User u WHERE u.facebookId = :facebook_id")
