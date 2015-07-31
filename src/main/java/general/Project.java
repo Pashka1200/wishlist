@@ -23,7 +23,7 @@ public class Project {
     public static void main(String[] args) throws SQLException {
 
 
-        UserDao userDao = new UserDao(User.class);
+//        UserDao userDao = new UserDao(User.class);
 //
 //        System.out.println(userManipulation.checkUser(1212, "1993-07-12"));
 //
