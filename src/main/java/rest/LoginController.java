@@ -20,9 +20,7 @@ public class LoginController
     @Context
     private ServletContext context;
 
-    @Inject
-    UserDao uDao;
-
+    static UserDao userDao = new UserDao();
 
     @GET
     @Produces(MediaType.TEXT_HTML)
@@ -43,7 +41,7 @@ public class LoginController
             long fb_id = json.getLong("fb_id");
             String date_of_birth = "222";
 //            UserDao userDao =  new UserDao(User.class);
-            String result = uDao.checkUser(fb_id,date_of_birth);
+            String result = userDao.checkUser(fb_id,date_of_birth);
 
             if (result.equals("new"))
                 jsonObject.put("status",result);

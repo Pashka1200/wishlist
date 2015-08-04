@@ -12,11 +12,11 @@ import java.util.List;
 /**
  * Created by pavlo on 21.07.15.
  */
-public class ItemDao<T> extends ClassDao<T> {
+public class ItemDao extends ClassDao {
     static Factory factory = Factory.getInstance();
 
-    public ItemDao(Class<T> class1) {
-        super(class1);
+    public ItemDao() {
+        super(Item.class);
     }
 
     InterfaseDao interfaseDaoForItem = factory.getInerfaseDao(Item.class);
@@ -24,7 +24,7 @@ public class ItemDao<T> extends ClassDao<T> {
     //call this method for receive list of items (client or friends)
     public List<Item> getItems(long facebook_id) throws SQLException{
         List<Item> items = new ArrayList<Item>();
-            List<Reserve> reserves = new ReserveDao(Reserve.class)
+            List<Reserve> reserves = new ReserveDao()
                     .findReservesByFacebookId(facebook_id);
         for(Reserve reserve : reserves) {
             items.add(reserve.getItem());
@@ -46,7 +46,7 @@ public class ItemDao<T> extends ClassDao<T> {
         item.setPicture(picture);
         interfaseDaoForItem.add(item);
 
-        new ReserveDao(Reserve.class).addConnection(facebook_id, item.getId());
+        new ReserveDao().addConnection(facebook_id, item.getId());
 
         return item.getId();
     }

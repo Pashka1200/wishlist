@@ -19,7 +19,7 @@ public class ItemLogic {
 
     public String getItemList(int page, long facebook_id) {
         try {
-            list = new ItemDao(Item.class).getItems(facebook_id);
+            list = new ItemDao().getItems(facebook_id);
 
             if (list.isEmpty())
             {

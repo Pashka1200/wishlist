@@ -23,6 +23,7 @@ public class ItemController {
     @Context
     private ServletContext context;
 
+    static ItemDao itemDao = new ItemDao();
 
     @POST
     @Path("getItems")
@@ -54,7 +55,7 @@ public class ItemController {
             String url = json.getString("url");
             String description = json.getString("description");
             String picture = json.getString("picture");
-            int itemId = new ItemDao(Item.class).addMyItem(fb_id,title,url,description,picture);
+            int itemId = itemDao.addMyItem(fb_id, title, url, description, picture);
             jsonObject.put("itemId",itemId);
         }
         catch (Exception e) {
@@ -73,7 +74,7 @@ public class ItemController {
             JSONObject json = new JSONObject(data);
             //int fb_id = json.getInt("fb_id");
             int item_id = json.getInt("item_id");
-            new ItemDao(Item.class).delMyItem(item_id);
+            itemDao.delMyItem(item_id);
             return Responses.JSON_RESPONSE_TRUE;
         }
         catch (Exception e) {
@@ -94,7 +95,7 @@ public class ItemController {
             String url = json.getString("url");
             String description = json.getString("description");
             String picture = json.getString("picture");
-            String result = new ItemDao(Item.class).updateMyItems(item_id,title,url,description,picture);
+            String result = itemDao.updateMyItems(item_id, title, url, description, picture);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
             else
