@@ -6,8 +6,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import table.Item;
 import table.Reserve;
+import table.User;
 import util.HibernateUtil;
 
+import javax.inject.Inject;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,13 +25,15 @@ public class ReserveDao extends ClassDao {
 
     InterfaseDao interfaseDao = factory.getInerfaseDao(Reserve.class);
 
+    static UserDao userDao = new UserDao();
+
     //get wish list by facebook id
     public List<Reserve> findReservesByFacebookId(long facebook_id) throws SQLException{
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesUserByFacebookId");
-//        query.setLong("userId", new UserDao(User.class)
-//                .findOneByFacebookId(facebook_id).getId());
+        query.setLong("userId", userDao
+                .findOneByFacebookId(facebook_id).getId());
         List<Reserve> reserves = query.list();
         return reserves;
     }
@@ -37,11 +41,11 @@ public class ReserveDao extends ClassDao {
     //use this method when you want to DELETE interconnected user-item connection
     //for deleting item in item table
     //this method call delMyItem(item_id) from ItemDao
-    public String delBuyItem(int item_id) throws SQLException {
+    public String delBuyItem(long item_id) throws SQLException {
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesByItemId");
-        query.setInteger("itemId", item_id);
+        query.setLong("itemId", item_id);
         Reserve reserve = (Reserve) query.uniqueResult();
         System.out.println(reserve.getId());
         interfaseDao.delete(reserve);
@@ -51,35 +55,33 @@ public class ReserveDao extends ClassDao {
 
     //create connection from user to item
     //called from addMyItem
-    public void addConnection (long facebook_id, int item_id) throws SQLException {
-//        User user = new UserDao(User.class).findOneByFacebookId(facebook_id);
-//        System.out.println(user.getId());
-//        Reserve reserve = new Reserve();
-//        reserve.setItem((Item) factory.getInerfaseDao(Item.class).get(item_id));
-//        reserve.setClient(user);
-//        interfaseDao.add(reserve);
+    public void addConnection (long facebook_id, Item item) throws SQLException {
+        User user = new UserDao().findOneByFacebookId(facebook_id);
+        Reserve reserve = new Reserve();
+        reserve.setItem(item);
+        reserve.setClient(user);
+        interfaseDao.add(reserve);
     }
 
     //add buyer unique id to reserve table
-    public String addBuyer (int item_id, long buyer_id) throws SQLException{
+    public String addBuyer (long item_id, long buyer_id) throws SQLException{
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesByItemId");
-        query.setInteger("itemId", item_id);
+        query.setLong("itemId", item_id);
         Reserve reserve = (Reserve) query.uniqueResult();
-        System.out.println(reserve.getId());
-//        reserve.setBuyer_id(new UserDao(User.class)
-//                .findOneByFacebookId(buyer_id).getId());
+        reserve.setBuyer_id(userDao
+                .findOneByFacebookId(buyer_id).getId());
         interfaseDao.update(reserve);
         return "true";
     }
 
     //delete buyer id and set NULL into buyer_id field
-    public String delBuyer (int item_id) throws SQLException {
+    public String delBuyer (long item_id) throws SQLException {
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesByItemId");
-        query.setInteger("itemId", item_id);
+        query.setLong("itemId", item_id);
         Reserve reserve = (Reserve) query.uniqueResult();
         reserve.setBuyer_id(null);
         interfaseDao.update(reserve);
@@ -87,11 +89,11 @@ public class ReserveDao extends ClassDao {
     }
 
     //check buyer_id field and return "empty" if it contain null
-    public String checkBuyer(int item_id) throws SQLException {
+    public String checkBuyer(long item_id) throws SQLException {
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesByItemId");
-        query.setInteger("itemId", item_id);
+        query.setLong("itemId", item_id);
         Reserve reserve = (Reserve) query.uniqueResult();
         System.out.println(reserve.getId());
         if(reserve.getBuyer_id()==null) {
@@ -104,11 +106,11 @@ public class ReserveDao extends ClassDao {
     }
 
     //modifies the is_buy field
-    public String isBuyed(int item_id, int buy_status) throws SQLException{
+    public String isBuyed(long item_id, int buy_status) throws SQLException{
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesByItemId");
-        query.setInteger("itemId", item_id);
+        query.setLong("itemId", item_id);
         Reserve reserve = (Reserve) query.uniqueResult();
         reserve.setIs_buy(buy_status);
         interfaseDao.update(reserve);
@@ -116,11 +118,11 @@ public class ReserveDao extends ClassDao {
     }
 
     //check is_buy field
-    public String checkIsBuy(int item_id) throws SQLException{
+    public String checkIsBuy(long item_id) throws SQLException{
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesByItemId");
-        query.setInteger("itemId", item_id);
+        query.setLong("itemId", item_id);
         Reserve reserve = (Reserve) query.uniqueResult();
         System.out.println(reserve.getIs_buy());
         return "true";

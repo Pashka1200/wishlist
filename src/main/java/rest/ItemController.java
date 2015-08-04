@@ -55,7 +55,7 @@ public class ItemController {
             String url = json.getString("url");
             String description = json.getString("description");
             String picture = json.getString("picture");
-            int itemId = itemDao.addMyItem(fb_id, title, url, description, picture);
+            long itemId = itemDao.addMyItem(fb_id, title, url, description, picture);
             jsonObject.put("itemId",itemId);
         }
         catch (Exception e) {

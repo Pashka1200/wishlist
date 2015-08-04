@@ -35,7 +35,7 @@ public class ItemDao extends ClassDao {
 
     //add new item to the item table
     //call addConnection in ReserveDao
-    public int addMyItem(long facebook_id, String title,
+    public long addMyItem(long facebook_id, String title,
                             String url, String description, String picture) throws  SQLException{
 
         Item item = new Item();
@@ -47,12 +47,12 @@ public class ItemDao extends ClassDao {
         item.setPicture(picture);
         interfaseDaoForItem.add(item);
 
-        reserveDao.addConnection(facebook_id, item.getId());
+        reserveDao.addConnection(facebook_id, item);
 
         return item.getId();
     }
 
-    public int addMyItem(long facebook_id, String title,
+    public long addMyItem(long facebook_id, String title,
                          String url, String description) throws  SQLException{
 
         Item item = new Item();
@@ -63,13 +63,13 @@ public class ItemDao extends ClassDao {
         item.setDescription(description);
         interfaseDaoForItem.add(item);
 
-        reserveDao.addConnection(facebook_id, item.getId());
+        reserveDao.addConnection(facebook_id, item);
 
         return item.getId();
     }
 
     //update some item in the table item
-    public String updateMyItems(int item_id, String title, String url, String description, String picture) throws  SQLException{
+    public String updateMyItems(long item_id, String title, String url, String description, String picture) throws  SQLException{
         Item item;
         item = (Item) interfaseDaoForItem.get(item_id);
         item.setTitle(title);
@@ -81,7 +81,7 @@ public class ItemDao extends ClassDao {
     }
 
     //thi method delete some item in item table by item_id
-    public void delMyItem(int item_id) throws SQLException{
+    public void delMyItem(long item_id) throws SQLException{
         interfaseDaoForItem.delete(interfaseDaoForItem.get(item_id));
     }
 

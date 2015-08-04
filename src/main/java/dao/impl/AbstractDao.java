@@ -46,7 +46,7 @@ public abstract class AbstractDao<T> implements InterfaseDao<T> {
 
     }
 
-    public T get(int id) throws SQLException {
+    public T get(long id) throws SQLException {
         T result = null;
         Session session = null;
         try {

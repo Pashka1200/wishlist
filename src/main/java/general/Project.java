@@ -40,7 +40,7 @@ public class Project {
 //            System.out.println(item.getTitle());
 //        }
 
-//        ItemDao itemDao = new ItemDao(Item.class);
+//      ItemDao itemDao = new ItemDao();
 //       ReserveDao reserveDao = new ReserveDao(Reserve.class);
 
 //        List<Item> items = itemDao.getItems(1001);

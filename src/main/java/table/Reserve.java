@@ -22,7 +22,7 @@ public class Reserve implements Serializable{
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name="client_id", nullable = false)
@@ -39,7 +39,7 @@ public class Reserve implements Serializable{
     private int is_buy;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -60,7 +60,7 @@ public class Reserve implements Serializable{
     }
 
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

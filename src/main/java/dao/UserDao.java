@@ -34,6 +34,7 @@ public class UserDao extends ClassDao {
         Query query = session.getNamedQuery("findOneUserByFacebookId");
         query.setLong("facebook_id", facebook_id);
         User user = (User) query.uniqueResult();
+
         return user;
     }
 
