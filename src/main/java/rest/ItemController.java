@@ -4,8 +4,9 @@ import dao.ItemDao;
 import logic.ItemLogic;
 import logic.Responses;
 import org.codehaus.jettison.json.JSONObject;
-import table.Item;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
@@ -17,12 +18,15 @@ import javax.ws.rs.core.MediaType;
 /**
  * Created by admin on 31.07.2015.
  */
+@Stateless
 @Path("item")
 public class ItemController {
 
     @Context
     private ServletContext context;
 
+    @Inject
+    ItemDao iDao;
 
     @POST
     @Path("getItems")
@@ -33,7 +37,7 @@ public class ItemController {
             JSONObject json = new JSONObject(data);
             int page = json.getInt("page");
             long fb_id = json.getLong("fb_id");
-            return new ItemLogic().getItemList(page,fb_id);
+            return new ItemLogic().getItemList(page, fb_id);
         }
         catch (Exception e) {
             return Responses.JSON_RESPONSE_FALSE;
@@ -54,7 +58,7 @@ public class ItemController {
             String url = json.getString("url");
             String description = json.getString("description");
             String picture = json.getString("picture");
-            int itemId = new ItemDao(Item.class).addMyItem(fb_id,title,url,description,picture);
+            int itemId = iDao.addMyItem(fb_id, title, url, description, picture);
             jsonObject.put("itemId",itemId);
         }
         catch (Exception e) {
@@ -73,7 +77,7 @@ public class ItemController {
             JSONObject json = new JSONObject(data);
             //int fb_id = json.getInt("fb_id");
             int item_id = json.getInt("item_id");
-            new ItemDao(Item.class).delMyItem(item_id);
+            iDao.delMyItem(item_id);
             return Responses.JSON_RESPONSE_TRUE;
         }
         catch (Exception e) {
@@ -94,7 +98,7 @@ public class ItemController {
             String url = json.getString("url");
             String description = json.getString("description");
             String picture = json.getString("picture");
-            String result = new ItemDao(Item.class).updateMyItems(item_id,title,url,description,picture);
+            String result = iDao.updateMyItems(item_id, title, url, description, picture);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
             else
