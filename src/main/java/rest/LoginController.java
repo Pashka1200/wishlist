@@ -42,6 +42,7 @@ public class LoginController
             JSONObject json = new JSONObject(data);
             long fb_id = json.getLong("fb_id");
             String date_of_birth = "222";
+//            UserDao userDao =  new UserDao(User.class);
             String result = uDao.checkUser(fb_id,date_of_birth);
 
             if (result.equals("new"))
