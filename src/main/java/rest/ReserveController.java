@@ -3,9 +3,8 @@ package rest;
 import dao.ReserveDao;
 import logic.Responses;
 import org.codehaus.jettison.json.JSONObject;
+import table.Reserve;
 
-import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
@@ -17,15 +16,11 @@ import javax.ws.rs.core.MediaType;
 /**
  * Created by admin on 02.08.2015.
  */
-@Stateless
 @Path("reserve")
 public class ReserveController {
 
     @Context
     private ServletContext context;
-
-    @Inject
-    ReserveDao rDao;
 
     @POST
     @Path("addBuyer")
@@ -36,7 +31,8 @@ public class ReserveController {
             JSONObject json = new JSONObject(data);
             long buyer_id = json.getLong("buyer_id");
             int item_id = json.getInt("item_id");
-            String result = rDao.addBuyer(item_id,buyer_id);
+            ReserveDao reserveDao = new ReserveDao(Reserve.class);
+            String result = reserveDao.addBuyer(item_id,buyer_id);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
             else
@@ -55,7 +51,8 @@ public class ReserveController {
         try {
             JSONObject json = new JSONObject(data);
             int item_id = json.getInt("item_id");
-            String result = rDao.delBuyer(item_id);
+            ReserveDao reserveDao = new ReserveDao(Reserve.class);
+            String result = reserveDao.delBuyer(item_id);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
             else
@@ -74,7 +71,8 @@ public class ReserveController {
         try {
             JSONObject json = new JSONObject(data);
             int item_id = json.getInt("item_id");
-            String result = rDao.checkBuyer(item_id);
+            ReserveDao reserveDao = new ReserveDao(Reserve.class);
+            String result = reserveDao.checkBuyer(item_id);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
             else if (result.equals("empty"))
@@ -96,7 +94,8 @@ public class ReserveController {
             JSONObject json = new JSONObject(data);
             int item_id = json.getInt("item_id");
             int buy_status = json.getInt("buy_status");
-            String result = rDao.isBuyed(item_id,buy_status);
+            ReserveDao reserveDao = new ReserveDao(Reserve.class);
+            String result = reserveDao.isBuyed(item_id,buy_status);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
             else
@@ -114,7 +113,8 @@ public class ReserveController {
         try {
             JSONObject json = new JSONObject(data);
             int item_id = json.getInt("item_id");
-            String result = rDao.checkIsBuy(item_id);
+            ReserveDao reserveDao = new ReserveDao(Reserve.class);
+            String result = reserveDao.checkIsBuy(item_id);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
             else
