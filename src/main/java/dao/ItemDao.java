@@ -20,6 +20,7 @@ public class ItemDao extends ClassDao {
     }
 
     InterfaseDao interfaseDaoForItem = factory.getInerfaseDao(Item.class);
+    static ReserveDao reserveDao = new ReserveDao();
 
     //call this method for receive list of items (client or friends)
     public List<Item> getItems(long facebook_id) throws SQLException{
@@ -39,21 +40,37 @@ public class ItemDao extends ClassDao {
 
         Item item = new Item();
 
-        //add item with received title, url and description
+        //add item with received title, url and description with picture
         item.setTitle(title);
         item.setUrl(url);
         item.setDescription(description);
         item.setPicture(picture);
         interfaseDaoForItem.add(item);
 
-        new ReserveDao().addConnection(facebook_id, item.getId());
+        reserveDao.addConnection(facebook_id, item.getId());
+
+        return item.getId();
+    }
+
+    public int addMyItem(long facebook_id, String title,
+                         String url, String description) throws  SQLException{
+
+        Item item = new Item();
+
+        //add item with received title, url and description without picture
+        item.setTitle(title);
+        item.setUrl(url);
+        item.setDescription(description);
+        interfaseDaoForItem.add(item);
+
+        reserveDao.addConnection(facebook_id, item.getId());
 
         return item.getId();
     }
 
     //update some item in the table item
     public String updateMyItems(int item_id, String title, String url, String description, String picture) throws  SQLException{
-        Item item = new Item();
+        Item item;
         item = (Item) interfaseDaoForItem.get(item_id);
         item.setTitle(title);
         item.setUrl(url);

@@ -22,6 +22,8 @@ public class ReserveController {
     @Context
     private ServletContext context;
 
+    static ReserveDao reserveDao = new ReserveDao();
+
     @POST
     @Path("addBuyer")
     @Produces(MediaType.APPLICATION_JSON)
@@ -31,7 +33,6 @@ public class ReserveController {
             JSONObject json = new JSONObject(data);
             long buyer_id = json.getLong("buyer_id");
             int item_id = json.getInt("item_id");
-            ReserveDao reserveDao = new ReserveDao();
             String result = reserveDao.addBuyer(item_id,buyer_id);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
@@ -51,7 +52,6 @@ public class ReserveController {
         try {
             JSONObject json = new JSONObject(data);
             int item_id = json.getInt("item_id");
-            ReserveDao reserveDao = new ReserveDao();
             String result = reserveDao.delBuyer(item_id);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
@@ -71,7 +71,6 @@ public class ReserveController {
         try {
             JSONObject json = new JSONObject(data);
             int item_id = json.getInt("item_id");
-            ReserveDao reserveDao = new ReserveDao();
             String result = reserveDao.checkBuyer(item_id);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
@@ -94,7 +93,6 @@ public class ReserveController {
             JSONObject json = new JSONObject(data);
             int item_id = json.getInt("item_id");
             int buy_status = json.getInt("buy_status");
-            ReserveDao reserveDao = new ReserveDao();
             String result = reserveDao.isBuyed(item_id,buy_status);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
@@ -113,7 +111,6 @@ public class ReserveController {
         try {
             JSONObject json = new JSONObject(data);
             int item_id = json.getInt("item_id");
-            ReserveDao reserveDao = new ReserveDao();
             String result = reserveDao.checkIsBuy(item_id);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
