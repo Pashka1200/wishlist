@@ -1,24 +1,31 @@
-package ologic;
+package logic;
 
 import dao.ItemDao;
 import org.codehaus.jettison.json.JSONObject;
 import table.Item;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.List;
 
 /**
  * Created by admin on 31.07.2015.
  */
+@Stateless
 public class ItemLogic {
+
     private List<Item> list;
     private org.codehaus.jettison.json.JSONArray jsonObject = new org.codehaus.jettison.json.JSONArray();
     private JSONObject json;
     private JSONObject jsonObject1 = new JSONObject();
     private Item item;
 
+    @Inject
+    ItemDao iDao;
+
     public String getItemList(int page, long facebook_id) {
         try {
-            list = new ItemDao(Item.class).getItems(facebook_id);
+            list = iDao.getItems(facebook_id);
 
             if (list.isEmpty())
             {

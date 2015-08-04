@@ -24,7 +24,7 @@ public class UserDao extends ClassDao {
         super(User.class);
     }
 
-    InterfaseDao interfaseDao = factory.getInerfaseDao(User.class);
+        InterfaseDao interfaseDao = factory.getInerfaseDao(User.class);
 
 
     //find user by facebook id

@@ -5,8 +5,6 @@ import general.Factory;
 import table.Item;
 import table.Reserve;
 
-import javax.ejb.Stateless;
-import javax.inject.Named;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,23 +12,19 @@ import java.util.List;
 /**
  * Created by pavlo on 21.07.15.
  */
-
-@Stateless
-@Named
-public class ItemDao extends ClassDao {
+public class ItemDao<T> extends ClassDao<T> {
     static Factory factory = Factory.getInstance();
 
-    public ItemDao() {
-        super(Item.class);
+    public ItemDao(Class<T> class1) {
+        super(class1);
     }
 
     InterfaseDao interfaseDaoForItem = factory.getInerfaseDao(Item.class);
 
-
     //call this method for receive list of items (client or friends)
     public List<Item> getItems(long facebook_id) throws SQLException{
         List<Item> items = new ArrayList<Item>();
-            List<Reserve> reserves = new ReserveDao()
+            List<Reserve> reserves = new ReserveDao(Reserve.class)
                     .findReservesByFacebookId(facebook_id);
         for(Reserve reserve : reserves) {
             items.add(reserve.getItem());
@@ -52,7 +46,7 @@ public class ItemDao extends ClassDao {
         item.setPicture(picture);
         interfaseDaoForItem.add(item);
 
-        new ReserveDao().addConnection(facebook_id, item.getId());
+        new ReserveDao(Reserve.class).addConnection(facebook_id, item.getId());
 
         return item.getId();
     }
