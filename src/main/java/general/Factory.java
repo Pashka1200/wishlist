@@ -12,8 +12,6 @@ public class Factory {
 
     private InterfaseDao interfaseDao;
 
-
-
     private Factory() {    }
 
     public static Factory getInstance() {
