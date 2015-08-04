@@ -1,6 +1,7 @@
-package ologic;
+package logic;
 
 import dao.ItemDao;
+import logic.Responses;
 import org.codehaus.jettison.json.JSONObject;
 import table.Item;
 
