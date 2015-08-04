@@ -25,11 +25,11 @@ public class ReserveDao<T> extends ClassDao<T> {
     InterfaseDao interfaseDao = factory.getInerfaseDao(Reserve.class);
 
     //get wish list by facebook id
-    public List<Reserve> findReservesByFacebookId(int facebook_id) throws SQLException{
+    public List<Reserve> findReservesByFacebookId(long facebook_id) throws SQLException{
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesUserByFacebookId");
-        query.setInteger("userId", new UserDao(User.class)
+        query.setLong("userId", new UserDao(User.class)
                 .findOneByFacebookId(facebook_id).getId());
         List<Reserve> reserves = query.list();
         return reserves;
@@ -52,7 +52,7 @@ public class ReserveDao<T> extends ClassDao<T> {
 
     //create connection from user to item
     //called from addMyItem
-    public void addConnection (int facebook_id, int item_id) throws SQLException {
+    public void addConnection (long facebook_id, int item_id) throws SQLException {
         User user = new UserDao(User.class).findOneByFacebookId(facebook_id);
         System.out.println(user.getId());
         Reserve reserve = new Reserve();
@@ -62,7 +62,7 @@ public class ReserveDao<T> extends ClassDao<T> {
     }
 
     //add buyer unique id to reserve table
-    public String addBuyer (int item_id, int buyer_id) throws SQLException{
+    public String addBuyer (int item_id, long buyer_id) throws SQLException{
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesByItemId");

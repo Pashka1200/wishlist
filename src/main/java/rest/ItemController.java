@@ -32,7 +32,7 @@ public class ItemController {
         try {
             JSONObject json = new JSONObject(data);
             int page = json.getInt("page");
-            int fb_id = json.getInt("fb_id");
+            long fb_id = json.getLong("fb_id");
             return new ItemLogic().getItemList(page,fb_id);
         }
         catch (Exception e) {
@@ -49,7 +49,7 @@ public class ItemController {
         JSONObject jsonObject = new JSONObject();
         try {
             JSONObject json = new JSONObject(data);
-            int fb_id = json.getInt("fb_id");
+            long fb_id = json.getLong("fb_id");
             String title = json.getString("title");
             String url = json.getString("url");
             String description = json.getString("description");
@@ -63,5 +63,47 @@ public class ItemController {
             return jsonObject.toString();
 
     }
+
+    @POST
+    @Path("delItem")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getDelItem(@Context HttpServletRequest request, String data)
+    {
+        try {
+            JSONObject json = new JSONObject(data);
+            //int fb_id = json.getInt("fb_id");
+            int item_id = json.getInt("item_id");
+            new ItemDao(Item.class).delMyItem(item_id);
+            return Responses.JSON_RESPONSE_TRUE;
+        }
+        catch (Exception e) {
+            return Responses.JSON_RESPONSE_FALSE;
+        }
+    }
+
+    @POST
+    @Path("updateItem")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getUpdateItem(@Context HttpServletRequest request, String data)
+    {
+        try {
+            JSONObject json = new JSONObject(data);
+            //int fb_id = json.getInt("fb_id");
+            int item_id = json.getInt("item_id");
+            String title = json.getString("title");
+            String url = json.getString("url");
+            String description = json.getString("description");
+            String picture = json.getString("picture");
+            String result = new ItemDao(Item.class).updateMyItems(item_id,title,url,description,picture);
+            if (result.equals("true"))
+                return Responses.JSON_RESPONSE_TRUE;
+            else
+                return Responses.JSON_RESPONSE_FALSE;
+        }
+        catch (Exception e) {
+            return Responses.JSON_RESPONSE_FALSE;
+        }
+    }
+
 
 }

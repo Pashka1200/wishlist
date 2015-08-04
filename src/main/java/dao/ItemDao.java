@@ -22,7 +22,7 @@ public class ItemDao<T> extends ClassDao<T> {
     InterfaseDao interfaseDaoForItem = factory.getInerfaseDao(Item.class);
 
     //call this method for receive list of items (client or friends)
-    public List<Item> getItems(int facebook_id) throws SQLException{
+    public List<Item> getItems(long facebook_id) throws SQLException{
         List<Item> items = new ArrayList<Item>();
             List<Reserve> reserves = new ReserveDao(Reserve.class)
                     .findReservesByFacebookId(facebook_id);
@@ -34,7 +34,7 @@ public class ItemDao<T> extends ClassDao<T> {
 
     //add new item to the item table
     //call addConnection in ReserveDao
-    public int addMyItem(int facebook_id, String title,
+    public int addMyItem(long facebook_id, String title,
                             String url, String description, String picture) throws  SQLException{
 
         Item item = new Item();
@@ -50,25 +50,9 @@ public class ItemDao<T> extends ClassDao<T> {
 
         return item.getId();
     }
-    public int addMyItem(int facebook_id, String title,
-                            String url, String description) throws  SQLException{
-
-        Item item = new Item();
-
-        //add item with received title, url and description
-        item.setTitle(title);
-        item.setUrl(url);
-        item.setDescription(description);
-        interfaseDaoForItem.add(item);
-
-        new ReserveDao(Reserve.class).addConnection(facebook_id, item.getId());
-
-        return item.getId();
-    }
 
     //update some item in the table item
-    public String updateMyItems(int item_id, String title,
-                            String url, String description, String picture) throws  SQLException{
+    public String updateMyItems(int item_id, String title, String url, String description, String picture) throws  SQLException{
         Item item = new Item();
         item = (Item) interfaseDaoForItem.get(item_id);
         item.setTitle(title);

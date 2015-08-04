@@ -29,7 +29,7 @@ public class Reserve implements Serializable{
     private User client;
 
     @Column(name = "buyer_id")
-    private Integer buyer_id;
+    private Long buyer_id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="item_id", nullable = false)
@@ -47,7 +47,7 @@ public class Reserve implements Serializable{
         return client;
     }
 
-    public Integer getBuyer_id() {
+    public Long getBuyer_id() {
         return buyer_id;
     }
 
@@ -68,7 +68,7 @@ public class Reserve implements Serializable{
         this.client = client;
     }
 
-    public void setBuyer_id(Integer buyer_id) {
+    public void setBuyer_id(Long buyer_id) {
         this.buyer_id = buyer_id;
     }
 

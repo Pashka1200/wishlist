@@ -18,10 +18,10 @@ public class User {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Column(name="fb_id", unique = true)
-    private int facebookId;
+    private long facebookId;
 
     @OneToOne
     @PrimaryKeyJoinColumn
@@ -31,11 +31,11 @@ public class User {
     private String date_of_birth;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public int getFacebookId() {
+    public long getFacebookId() {
         return facebookId;
     }
 
@@ -44,11 +44,11 @@ public class User {
     }
 
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public void setFacebookId(int facebookId) {
+    public void setFacebookId(long facebookId) {
         this.facebookId = facebookId;
     }
 

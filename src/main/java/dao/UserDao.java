@@ -25,17 +25,17 @@ public class UserDao<T> extends ClassDao<T> {
 
 
     //find user by facebook id
-    public User findOneByFacebookId(int facebook_id) throws SQLException{
+    public User findOneByFacebookId(long facebook_id) throws SQLException{
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findOneUserByFacebookId");
-        query.setInteger("facebook_id", facebook_id);
+        query.setLong("facebook_id", facebook_id);
         User user = (User) query.uniqueResult();
         return user;
     }
 
     //check users in table user for contains user with this facebook id
-    public String checkUser(int facebook_id, String date_of_birth) throws SQLException{
+    public String checkUser(long facebook_id, String date_of_birth) throws SQLException{
 
         User newUser = new User();
         newUser.setFacebookId(facebook_id);
@@ -49,7 +49,8 @@ public class UserDao<T> extends ClassDao<T> {
     }
 
     //delete user by facebook id
-    public void deleteUser(int facebook_id) throws SQLException{
+    public void deleteUser(long facebook_id) throws SQLException{
         interfaseDao.delete(findOneByFacebookId(facebook_id));
       }
+
 }

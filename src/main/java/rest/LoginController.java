@@ -34,7 +34,7 @@ public class LoginController
         try
         {
             JSONObject json = new JSONObject(data);
-            int fb_id = json.getInt("fb_id");
+            long fb_id = json.getLong("fb_id");
             String date_of_birth = "222";
             UserDao userDao =  new UserDao(User.class);
             String result = userDao.checkUser(fb_id,date_of_birth);
