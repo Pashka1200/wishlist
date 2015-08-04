@@ -1,4 +1,4 @@
-package logic;
+package ologic;
 
 import dao.ItemDao;
 import org.codehaus.jettison.json.JSONObject;

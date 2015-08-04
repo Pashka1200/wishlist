@@ -8,20 +8,26 @@ import table.Item;
 import table.Reserve;
 import util.HibernateUtil;
 
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
  * Created by pavlo on 21.07.15.
  */
-public class ReserveDao<T> extends ClassDao<T> {
+
+@Stateless
+@Named
+public class ReserveDao extends ClassDao {
     static Factory factory = Factory.getInstance();
 
-    public ReserveDao(Class<T> class1) {
-        super(class1);
+    public ReserveDao() {
+        super(Reserve.class);
     }
 
     InterfaseDao interfaseDao = factory.getInerfaseDao(Reserve.class);
+
 
     //get wish list by facebook id
     public List<Reserve> findReservesByFacebookId(long facebook_id) throws SQLException{
@@ -45,7 +51,7 @@ public class ReserveDao<T> extends ClassDao<T> {
         Reserve reserve = (Reserve) query.uniqueResult();
         System.out.println(reserve.getId());
         interfaseDao.delete(reserve);
-        new ItemDao(Item.class).delMyItem(item_id);
+        new ItemDao().delMyItem(item_id);
         return "true";
     }
 
