@@ -3,8 +3,9 @@ package rest;
 import dao.UserDao;
 import logic.Responses;
 import org.codehaus.jettison.json.JSONObject;
-import table.User;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
@@ -12,11 +13,16 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.io.InputStream;
 
+@Stateless
 @Path("login")
 public class LoginController
 {
     @Context
     private ServletContext context;
+
+    @Inject
+    UserDao uDao;
+
 
     @GET
     @Produces(MediaType.TEXT_HTML)
@@ -36,8 +42,8 @@ public class LoginController
             JSONObject json = new JSONObject(data);
             long fb_id = json.getLong("fb_id");
             String date_of_birth = "222";
-            UserDao userDao =  new UserDao(User.class);
-            String result = userDao.checkUser(fb_id,date_of_birth);
+//            UserDao userDao =  new UserDao(User.class);
+            String result = uDao.checkUser(fb_id,date_of_birth);
 
             if (result.equals("new"))
                 jsonObject.put("status",result);

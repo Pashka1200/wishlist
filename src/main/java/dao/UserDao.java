@@ -7,18 +7,21 @@ import org.hibernate.Session;
 import table.User;
 import util.HibernateUtil;
 
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import java.sql.SQLException;
 
 /**
  * Created by pavlo on 20.07.15.
  */
 
-
-public class UserDao<T> extends ClassDao<T> {
+@Stateless
+@Named
+public class UserDao extends ClassDao {
     static Factory factory = Factory.getInstance();
 
-    public UserDao(Class<T> class1) {
-        super(class1);
+    public UserDao() {
+        super(User.class);
     }
 
         InterfaseDao interfaseDao = factory.getInerfaseDao(User.class);

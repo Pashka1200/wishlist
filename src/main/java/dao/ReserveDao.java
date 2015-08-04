@@ -6,7 +6,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import table.Item;
 import table.Reserve;
-import table.User;
 import util.HibernateUtil;
 
 import java.sql.SQLException;
@@ -29,8 +28,8 @@ public class ReserveDao<T> extends ClassDao<T> {
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesUserByFacebookId");
-        query.setLong("userId", new UserDao(User.class)
-                .findOneByFacebookId(facebook_id).getId());
+//        query.setLong("userId", new UserDao(User.class)
+//                .findOneByFacebookId(facebook_id).getId());
         List<Reserve> reserves = query.list();
         return reserves;
     }
@@ -53,12 +52,12 @@ public class ReserveDao<T> extends ClassDao<T> {
     //create connection from user to item
     //called from addMyItem
     public void addConnection (long facebook_id, int item_id) throws SQLException {
-        User user = new UserDao(User.class).findOneByFacebookId(facebook_id);
-        System.out.println(user.getId());
-        Reserve reserve = new Reserve();
-        reserve.setItem((Item) factory.getInerfaseDao(Item.class).get(item_id));
-        reserve.setClient(user);
-        interfaseDao.add(reserve);
+//        User user = new UserDao(User.class).findOneByFacebookId(facebook_id);
+//        System.out.println(user.getId());
+//        Reserve reserve = new Reserve();
+//        reserve.setItem((Item) factory.getInerfaseDao(Item.class).get(item_id));
+//        reserve.setClient(user);
+//        interfaseDao.add(reserve);
     }
 
     //add buyer unique id to reserve table
@@ -69,8 +68,8 @@ public class ReserveDao<T> extends ClassDao<T> {
         query.setInteger("itemId", item_id);
         Reserve reserve = (Reserve) query.uniqueResult();
         System.out.println(reserve.getId());
-        reserve.setBuyer_id(new UserDao(User.class)
-                .findOneByFacebookId(buyer_id).getId());
+//        reserve.setBuyer_id(new UserDao(User.class)
+//                .findOneByFacebookId(buyer_id).getId());
         interfaseDao.update(reserve);
         return "true";
     }
