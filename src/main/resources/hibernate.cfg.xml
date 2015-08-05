@@ -10,9 +10,9 @@
         <property name="hibernate.connection.url">jdbc:mysql://wishlist.cqswcj9aqrlj.us-west-2.rds.amazonaws.com:3306/wishlist</property>
         <property name="hibernate.connection.username">aradix11</property>
         <property name="hibernate.connection.password">aradix11</property>
-        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/wishlist</property>-->
-        <!--<property name="hibernate.connection.username">root</property>-->
-        <!--<property name="hibernate.connection.password"></property>-->
+        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/wishlist</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>-->
 
         
         <mapping class ="table.User" />

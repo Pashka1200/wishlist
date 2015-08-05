@@ -19,7 +19,7 @@ public class ItemDao extends ClassDao {
         super(Item.class);
     }
 
-    InterfaseDao interfaseDaoForItem = factory.getInerfaseDao(Item.class);
+    static InterfaseDao interfaseDaoForItem = factory.getInerfaseDao(Item.class);
     static ReserveDao reserveDao = new ReserveDao();
 
     //call this method for receive list of items (client or friends)
@@ -70,8 +70,7 @@ public class ItemDao extends ClassDao {
 
     //update some item in the table item
     public String updateMyItems(long item_id, String title, String url, String description, String picture) throws  SQLException{
-        Item item;
-        item = (Item) interfaseDaoForItem.get(item_id);
+        Item item = (Item) interfaseDaoForItem.get(item_id);
         item.setTitle(title);
         item.setUrl(url);
         item.setDescription(description);
