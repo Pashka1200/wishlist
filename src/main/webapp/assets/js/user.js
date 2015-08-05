@@ -4,6 +4,35 @@
 jQuery(function ($) {
     'use strict';
 
+    $('body').on('click', "#update_item", function () {
+
+        var title = $("#title").val();
+        var picture = $("#picture").val();
+        var url = $("#url").val();
+        var description = $("#description").val();
+        var item_id = $("#item_id").val();
+
+        var postData = {item_id: item_id,title:title,url:url,description:description,picture:picture};
+        console.log(postData);
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/index/item/updateItem",
+            dataType:'json',
+            data: JSON.stringify(postData),
+
+            success:  function (json) {
+                console.log(json);
+            },
+
+            error: function () {
+                console.log('error');
+            }
+
+        });
+    });
+
     $('body').on('click', "#getItems", function () {
         var fb_id = $("#fb_id").text();
         var page  = 0;
@@ -84,5 +113,8 @@ jQuery(function ($) {
         }
 
     });
+
+
+
 
 });

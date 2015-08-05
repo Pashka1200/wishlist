@@ -4,7 +4,6 @@ import dao.ItemDao;
 import logic.ItemLogic;
 import logic.Responses;
 import org.codehaus.jettison.json.JSONObject;
-import table.Item;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -90,11 +89,12 @@ public class ItemController {
         try {
             JSONObject json = new JSONObject(data);
             //int fb_id = json.getInt("fb_id");
-            int item_id = json.getInt("item_id");
+            long item_id = json.getLong("item_id");
             String title = json.getString("title");
             String url = json.getString("url");
             String description = json.getString("description");
             String picture = json.getString("picture");
+            System.out.println(item_id);
             String result = itemDao.updateMyItems(item_id, title, url, description, picture);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;

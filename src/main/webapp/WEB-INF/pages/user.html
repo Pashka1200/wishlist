@@ -83,7 +83,7 @@
 
 </script>
 
-
+<script src="/assets/js/user.js"></script>
 <div id="my_name"><span>Your name:</span><span id="fb_name"></span></div>
 
 <button onclick="logout();" id="logout">Log out</button>
@@ -105,6 +105,12 @@
             <li style="margin: auto; width: 122px;"><button id="add_item">Add Item</button></li>
 
         </ul>
+        <ul class="add_form">
+            <span>Update Button</span>
+            <li><input type="text" placeholder="item_id" id="item_id"></li>
+            <button id="update_item">Add Item</button>
+
+        </ul>
     </div>
 </div>
 <br><br>
@@ -112,6 +118,6 @@
 <button id="getItems">Get Items</button></div>
 <br><br>
 <div class="listitems"></div>
-<script src="/assets/js/user.js"></script>
+
 </body>
 </html>
