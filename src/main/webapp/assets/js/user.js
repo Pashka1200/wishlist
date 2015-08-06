@@ -65,7 +65,7 @@ jQuery(function ($) {
         $.ajax({
             type: "POST",
             contentType: "application/json",
-            url: "/index/item/getItems",
+            url: "/index/items/getItems",
             dataType:'json',
             data: JSON.stringify(postData),
 

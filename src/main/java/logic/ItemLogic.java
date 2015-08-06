@@ -11,6 +11,7 @@ import dao.ItemDao;
  * Created by admin on 31.07.2015.
  */
 public class ItemLogic {
+
     private List<Item> list;
     private org.codehaus.jettison.json.JSONArray jsonObject = new org.codehaus.jettison.json.JSONArray();
     private JSONObject json;
@@ -83,22 +84,18 @@ public class ItemLogic {
     }
 
     public String getItem(long item_id) {
-        try {
-            list = new ItemDao().getItems(item_id);
 
-            if (list.isEmpty())
-            {
-                return Responses.JSON_RESPONSE_FALSE;
-            }
+        try {
+            item = new ItemDao().getItem(item_id);
             json = new JSONObject();
-            json.put("id", list.getId());
-            json.put("title", list.getTitle());
-            json.put("url", list.getUrl());
-            json.put("description", list.getDescription());
-            json.put("picture",list.getPicture());
-            jsonObject.put(json);
+            json.put("id", item.getId());
+            json.put("title", item.getTitle());
+            json.put("url", item.getUrl());
+            json.put("description", item.getDescription());
+            json.put("picture",item.getPicture());
+           // jsonObject.put(json);
+            jsonObject1.put("item", json);
             json = null;
-            jsonObject1.put("item", jsonObject);
         }
         catch (Exception e) {
             return Responses.JSON_RESPONSE_FALSE;

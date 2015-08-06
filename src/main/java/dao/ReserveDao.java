@@ -9,7 +9,6 @@ import table.Reserve;
 import table.User;
 import util.HibernateUtil;
 
-import javax.inject.Inject;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -106,7 +105,7 @@ public class ReserveDao extends ClassDao {
     }
 
     //modifies the is_buy field
-    public String isBuyed(long item_id, int buy_status) throws SQLException{
+    public String isBought(long item_id, int buy_status) throws SQLException{
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findReservesByItemId");

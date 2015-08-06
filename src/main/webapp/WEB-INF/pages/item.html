@@ -7,12 +7,14 @@
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <script type="application/javascript" src="/assets/js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="/assets/js/main.js"></script>
+    <!--<script type="text/javascript" src="/assets/js/main.js"></script>-->
+    <script src="/assets/js/item.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
 
 </head>
 <body>
+
 <script>
 
     window.fbAsyncInit = function() {
@@ -83,42 +85,14 @@
 
 </script>
 
-<script src="/assets/js/item.js"></script>
+
 <div id="my_name"><span>Your name:</span><span id="fb_name"></span></div>
 
 <button onclick="logout();" id="logout">Log out</button>
-<div style="width:180px; margin: auto;">
-    <button id="showadditem">Show Add Item</button></div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="fb_container"><span>My facebook_id:</span><span id="fb_id"></span></div>
-        <ul class="add_form">
 
-            <li><input type="text" placeholder="title" id="title"></li>
+<div class="item"></div>
 
-            <li><input type="text" placeholder="url" id="url"></li>
-
-            <li><input type="text" placeholder="description" id="description"></li>
-
-            <li><input type="text" placeholder="picture" id="picture"></li>
-
-            <li style="margin: auto; width: 122px;"><button id="add_item">Add Item</button></li>
-
-        </ul>
-        <ul class="add_form">
-            <span>Update Button</span>
-            <li><input type="text" placeholder="item_id" id="item_id"></li>
-            <button id="update_item">Add Item</button>
-            <button id="del_item">Del Item</button>
-
-        </ul>
-    </div>
-</div>
-<br><br>
-<div style="width:180px; margin: auto;">
-<button id="getItems">Get Items</button></div>
-<br><br>
-<div class="listitems"></div>
+<button id="bought">Buy</button>
 
 </body>
 </html>

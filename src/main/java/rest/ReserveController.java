@@ -3,7 +3,6 @@ package rest;
 import dao.ReserveDao;
 import logic.Responses;
 import org.codehaus.jettison.json.JSONObject;
-import table.Reserve;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -85,15 +84,15 @@ public class ReserveController {
     }
 
     @POST
-    @Path("isBuyer")
+    @Path("isBought")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getIsBuyer(@Context HttpServletRequest request, String data)
+    public String getIsBought(@Context HttpServletRequest request, String data)
     {
         try {
             JSONObject json = new JSONObject(data);
             int item_id = json.getInt("item_id");
             int buy_status = json.getInt("buy_status");
-            String result = reserveDao.isBuyed(item_id,buy_status);
+            String result = reserveDao.isBought(item_id,buy_status);
             if (result.equals("true"))
                 return Responses.JSON_RESPONSE_TRUE;
             else
