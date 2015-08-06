@@ -76,6 +76,7 @@ jQuery(function ($) {
                 for (var i = 0; i < json.items.length; i++) {
                     list += '<li class="community_search">';
                     list += '<div class="username_community">';
+                    list += '<a href="/index/item"';
                     list += '<span id="item_name/'+json.items[i].id +'" class="fn_text" >' + json.items[i].title + '</span>';
                     list += '<br>';
                     list += '<span id="item_name/'+json.items[i].id +'" class="fn_text" >' + json.items[i].url + '</span>';
