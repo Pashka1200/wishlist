@@ -1,11 +1,11 @@
+
 package logic;
 
 import dao.ItemDao;
-import logic.Responses;
-import org.codehaus.jettison.json.JSONObject;
-import table.Item;
+        import org.codehaus.jettison.json.JSONObject;
+        import table.Item;
 
-import java.util.List;
+        import java.util.List;
 
 /**
  * Created by admin on 31.07.2015.
@@ -81,7 +81,8 @@ public class ItemLogic {
         }
         return jsonObject1.toString();
     }
-    public String getItemList(long item_id) {
+
+    public String getItem(long item_id) {
         try {
             list = new ItemDao().getItems(item_id);
 
@@ -89,50 +90,15 @@ public class ItemLogic {
             {
                 return Responses.JSON_RESPONSE_FALSE;
             }
-
-                        json = new JSONObject();
-                        item = list.get(i);
-                        json.put("id", item.getId());
-                        json.put("title", item.getTitle());
-                        json.put("url", item.getUrl());
-                        json.put("description", item.getDescription());
-                        json.put("picture",item.getPicture());
-                        jsonObject1.put("isEnd", false);
-                        jsonObject.put(json);
-                        json = null;
-                    }
-                } else if (size - startPosition < 10) {
-                    for (i = startPosition; i < size; i++) {
-                        json = new JSONObject();
-                        item = list.get(i);
-                        json.put("id", item.getId());
-                        json.put("title", item.getTitle());
-                        json.put("url", item.getUrl());
-                        json.put("description", item.getDescription());
-                        json.put("picture",item.getPicture());
-                        jsonObject1.put("isEnd", false);
-                        jsonObject.put(json);
-                        json = null;
-                    }
-                }
-            }
-            else if (size <= 10 && startPosition < 10)
-            {
-                for (i = 0; i < size; i++) {
-                    json = new JSONObject();
-                    item = list.get(i);
-                    json.put("id", item.getId());
-                    json.put("title", item.getTitle());
-                    json.put("url", item.getUrl());
-                    json.put("description", item.getDescription());
-                    json.put("picture",item.getPicture());
-                    jsonObject1.put("isEnd", false);
-                    jsonObject.put(json);
-                    json = null;
-                }
-            }
-
-            jsonObject1.put("items", jsonObject);
+            json = new JSONObject();
+            json.put("id", list.getId());
+            json.put("title", list.getTitle());
+            json.put("url", list.getUrl());
+            json.put("description", list.getDescription());
+            json.put("picture",list.getPicture());
+            jsonObject.put(json);
+            json = null;
+            jsonObject1.put("item", jsonObject);
         }
         catch (Exception e) {
             return Responses.JSON_RESPONSE_FALSE;

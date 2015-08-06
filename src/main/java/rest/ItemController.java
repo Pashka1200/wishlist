@@ -1,8 +1,7 @@
 package rest;
 
+import dao.ItemDao;
 import logic.ItemLogic;
-import logic.Responses;
-import org.codehaus.jettison.json.JSONObject;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -20,21 +19,22 @@ public class ItemController {
     @Context
     private ServletContext context;
 
+    static ItemDao itemDao = new ItemDao();
+
+
     @GET
     @Produces(MediaType.TEXT_HTML)
     public InputStream getPage(@Context HttpServletRequest request,
                                @PathParam("id") long id) {
         return context.getResourceAsStream("/WEB-INF/pages/item.html");
     }
-    @POST
+
+    @GET
     @Path("getItem{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getItem(@Context HttpServletRequest request, @PathParam("id") long id)
     {
-
-        return new ItemLogic().getItemList(id);
-
-
+        return new ItemLogic().getItem(id);
     }
 
 
