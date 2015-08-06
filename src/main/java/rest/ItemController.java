@@ -1,6 +1,7 @@
 package rest;
 
 import dao.ItemDao;
+import dao.ReserveDao;
 import logic.ItemLogic;
 import logic.Responses;
 import org.codehaus.jettison.json.JSONObject;
@@ -23,6 +24,7 @@ public class ItemController {
     private ServletContext context;
 
     static ItemDao itemDao = new ItemDao();
+    static ReserveDao reserveDao = new ReserveDao();
 
     @POST
     @Path("getItems")
@@ -72,8 +74,8 @@ public class ItemController {
         try {
             JSONObject json = new JSONObject(data);
             //int fb_id = json.getInt("fb_id");
-            int item_id = json.getInt("item_id");
-            itemDao.delMyItem(item_id);
+            long item_id = json.getLong("item_id");
+            reserveDao.delBuyItem(item_id);
             return Responses.JSON_RESPONSE_TRUE;
         }
         catch (Exception e) {

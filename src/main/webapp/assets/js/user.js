@@ -33,6 +33,31 @@ jQuery(function ($) {
         });
     });
 
+    $('body').on('click', "#del_item", function () {
+
+        var item_id = $("#item_id").val();
+        var postData = {item_id: item_id};
+        console.log(postData);
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/index/item/delItem",
+            dataType:'json',
+            data: JSON.stringify(postData),
+
+            success:  function (json) {
+                console.log(json);
+            },
+
+            error: function () {
+                console.log('error');
+            }
+
+        });
+    });
+
+
     $('body').on('click', "#getItems", function () {
         var fb_id = $("#fb_id").text();
         var page  = 0;
