@@ -34,6 +34,9 @@ public class ItemDao extends ClassDao {
             return items;
     }
 
+    public Item getItem(long item_id) throws SQLException{
+        return (Item) interfaseDaoForItem.get(item_id);
+    }
 
     //add new item to the item table
     //call addConnection in ReserveDao
