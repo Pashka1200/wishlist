@@ -7,9 +7,9 @@
 
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://wishlist.cqswcj9aqrlj.us-west-2.rds.amazonaws.com:3306/wishlist</property>
-        <property name="hibernate.connection.username">aradix11</property>
-        <property name="hibernate.connection.password">aradix11</property>
+        <property name="hibernate.connection.url">jdbc:mysql://sql2.freesqldatabase.com:3306/sql285768</property>
+        <property name="hibernate.connection.username">sql285768</property>
+        <property name="hibernate.connection.password">qE1*qD7%</property>
         <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/wishlist</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>-->

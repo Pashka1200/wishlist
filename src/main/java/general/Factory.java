@@ -19,8 +19,8 @@ public class Factory {
     }
 
 
-    public InterfaseDao getInerfaseDao(Class class1) {
-       if(interfaseDao == null)
+    public InterfaseDao getInterfaseDao(Class class1) {
+//       if(interfaseDao == null)
        interfaseDao = new ClassDao(class1);
         return interfaseDao;
     }

@@ -23,7 +23,7 @@ public class ReserveDao extends ClassDao {
         super(Reserve.class);
     }
 
-    static InterfaseDao interfaseDao = factory.getInerfaseDao(Reserve.class);
+    static InterfaseDao interfaseDao = factory.getInterfaseDao(Reserve.class);
 
     static UserDao userDao = new UserDao();
 

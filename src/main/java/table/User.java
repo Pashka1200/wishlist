@@ -23,10 +23,6 @@ public class User {
     @Column(name="fb_id", unique = true)
     private long facebookId;
 
-//    @OneToOne
-//    @PrimaryKeyJoinColumn
-//    private User user;
-
     @Column(name="date_of_birth")
     private String date_of_birth;
 

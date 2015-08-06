@@ -40,7 +40,7 @@ public class Project {
 //            System.out.println(item.getTitle());
 //        }
 
-//      ItemDao itemDao = new ItemDao();
+//           ItemDao itemDao = new ItemDao();
 ////       ReserveDao reserveDao = new ReserveDao(Reserve.class);
 //        long id = 858306037591360L;
 //        List<Item> items = itemDao.getItems(id);
@@ -49,8 +49,8 @@ public class Project {
 //        }
 
 //        System.out.println(itemDao.addMyItem(1001, "iPhone 5S", "", "iPhone 5S"));
-//        System.out.println(itemDao.updateMyItems(65,"Sony","","Xperia Z","pic"));
-//        itemDao.delMyItem(15);
+//        System.out.println(itemDao.updateMyItems(32,"ZHOPA","","zhopen","(_!_)"));
+//        itemDao.delMyItem(65);
 //        reserveDao.delBuyItem(1001,20);
 
        // InterfaseDao interfaseDaoUser = factory.getInerfaseDao(User.class);
