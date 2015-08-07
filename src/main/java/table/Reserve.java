@@ -9,9 +9,17 @@ import java.io.Serializable;
 @Entity
 @Table(name="reserve")
 @NamedQueries({
-        @NamedQuery(name = "findReservesUserByFacebookId",
+        //get items list which received or not
+        @NamedQuery(name = "findReservesUserByClientFacebookId",
                 query = "SELECT r " +
-                        "FROM Reserve r WHERE r.client.id = :userId"),
+                        "FROM Reserve r WHERE r.client.id = :userId AND r.is_buy = :status"),
+
+        //get items for present to someone
+        @NamedQuery(name = "findReservesUserByBuyerFacebookId",
+                query = "SELECT r " +
+                        "FROM Reserve r WHERE r.buyer_id = :userId AND r.is_buy = :status"),
+
+        //for manipulation with some item
         @NamedQuery(name = "findReservesByItemId",
                 query = "SELECT r " +
                         "FROM Reserve r WHERE r.item.id = :itemId")

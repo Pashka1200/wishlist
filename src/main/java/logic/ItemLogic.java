@@ -18,9 +18,9 @@ public class ItemLogic {
     private JSONObject jsonObject1 = new JSONObject();
     private Item item;
 
-    public String getItemList(int page, long facebook_id) {
+    public String getItemList(int page, long facebook_id, int buy_status) {
         try {
-            list = new ItemDao().getItems(facebook_id);
+            list = new ItemDao().getItems(facebook_id, buy_status);
 
             if (list.isEmpty())
             {

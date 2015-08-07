@@ -35,7 +35,8 @@ public class ItemsController {
             JSONObject json = new JSONObject(data);
             int page = json.getInt("page");
             long fb_id = json.getLong("fb_id");
-            return new ItemLogic().getItemList(page,fb_id);
+            int buy_status = 1;
+            return new ItemLogic().getItemList(page,fb_id,buy_status);
         }
         catch (Exception e) {
             return Responses.JSON_RESPONSE_FALSE;

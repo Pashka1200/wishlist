@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import java.sql.SQLException;
 
+
 /**
  * Created by pavlo on 20.07.15.
  */
@@ -37,6 +38,8 @@ public class UserDao extends ClassDao {
 
         return user;
     }
+
+
 
     //check users in table user for contains user with this facebook id
     public String checkUser(long facebook_id, String date_of_birth) throws SQLException{

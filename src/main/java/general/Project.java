@@ -23,7 +23,13 @@ public class Project {
     public static void main(String[] args) throws SQLException {
 
 
-//       UserDao userDao = new UserDao(User.class);
+//       UserDao userDao = new UserDao();
+        ItemDao itemDao = new ItemDao();
+        long id = 1021432071201151L;
+//        List<Item> items = itemDao.findCleintsItemsByBuyer(id);
+//        for (Item item : items) {
+//            System.out.println(item.getTitle() + " " + item.getDescription()+ " " + item.getUrl() );
+//        }
 //
 //        System.out.println(userManipulation.checkUser(1212, "1993-07-12"));
 //
@@ -32,7 +38,7 @@ public class Project {
 //        interfaseDao.get(10);
 
 
-       // InterfaseDao interfaseDao = factory.getInerfaseDao(Reserve.class);
+        // InterfaseDao interfaseDao = factory.getInerfaseDao(Reserve.class);
 //
 //        interfaseDao = factory.getInerfaseDao(Item.class);
 //        List<Item> items = interfaseDao.getAll();
@@ -40,11 +46,21 @@ public class Project {
 //            System.out.println(item.getTitle());
 //        }
 
-//           ItemDao itemDao = new ItemDao();
-////       ReserveDao reserveDao = new ReserveDao(Reserve.class);
+//          ReserveDao reserveDao = new ReserveDao();
 //        long id = 858306037591360L;
-//        List<Item> items = itemDao.getItems(id);
+//        List<Reserve> reserves = reserveDao.findClientByBuyer(id);
+//                for(Reserve reserve : reserves) {
+//                    System.out.println(reserve.getBuyer_id());
+//                }
+//        System.out.println("Bought items: ");
+//        List<Item> items = itemDao.getItems(id, 1);
 //        for (Item item : items) {
+//            System.out.println(item.getId() + " " + item.getTitle() + " " + item.getDescription());
+//        }
+//
+//        System.out.println("I want: ");
+//        List<Item> items1 = itemDao.getItems(id, 0);
+//        for (Item item : items1) {
 //            System.out.println(item.getId() + " " + item.getTitle() + " " + item.getDescription());
 //        }
 
