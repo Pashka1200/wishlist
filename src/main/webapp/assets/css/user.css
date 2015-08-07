@@ -1,0 +1,85 @@
+* {
+    margin:auto 0;
+    padding: 0px;
+}
+html,body {
+    width:100%;
+    height:100%;
+    margin: auto 0;
+}
+body {
+    background-color: #ececec;
+    background-position: center;
+    background-size: contain;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.004);
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-family: Lato;
+    color:#000;
+}
+header {
+    width:80%;
+    height: 30%;
+    margin: 0 auto;
+    padding-top: 7%;
+
+}
+footer {
+    width:80%;
+    height: 70%;
+    margin: 0 auto;
+    padding-top: 2%;
+}
+.left_header {
+    width:40%;
+    height: 80%;
+    float: left;
+}
+.right_header {
+    width: 60%;
+    height: 80%;
+    float: left;
+    padding-left: 10%;
+    text-align: -webkit-left;
+}
+.top_line {
+    height: 20px;
+    width: 100%;
+    background-color: rgba(255,146,48,1);
+}
+.avatar {
+    border-radius: 77px;
+    border: 2px solid #FF9230;
+    box-shadow: 0px 0px 3px 2px #FF8201;
+}
+#fb_id {
+    width:1px;
+    height:1px;
+    opacity: 0;
+}
+#name {
+    font-size: 4em;
+    color: #FF9230;
+}
+#date {
+    font-size: 3.2em;
+    color: rgba(144,144,148,1);
+}
+.add_item {
+    width: 100%;
+    background-color: #FF9230;
+    border: 1px solid#FF9230;
+    height: 25%;
+    font-size: 3em;
+    color: #fff;
+}
+#logout {
+    width: 100%;
+    margin-top: 10%;
+    background-color: #FF9230;
+    border: 1px solid#FF9230;
+    height: 15%;
+    font-size: 3em;
+    color: #fff;
+}
+  /*facebok end */

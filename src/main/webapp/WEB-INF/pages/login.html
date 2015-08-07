@@ -1,121 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Access-Control-Allow-Origin" content="*">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>WishList Web 2.0</title>
+<html>
+    <head>
+        <title>WishList</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+        <!--<script src="/bower_components/webcomponentsjs/webcomponents.min.js" > </script>-->
+            <!--<link rel="import"  href="C:\Users\andriy\Documents\bionic\wishlist\src\main\webapp\bower_components\paper-elements\paper-elements.html">-->
+        <!--<link rel="import" href="http://localhost:8080/index/bower_components/core-toolbar/core-toolbar.html">-->
+        <!--<link rel="import" href="/bower_components/core-icons/core-icons.html" >-->
+        <link rel="stylesheet" href="/assets/css/login.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+         <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css' />
 
-      <!--Server deploy instans-->
+        <script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+        <script type="application/javascript" src="/assets/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="/assets/js/main.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
 
-        <!--<link href="/WishList/assets/css/bootstrap.css" rel="stylesheet">-->
-        <!--<link rel="stylesheet" type="text/css" href="/WishList/assets/css/style.css">-->
-        <!--<script type="application/javascript" src="/WishList/assets/js/jquery-1.11.3.min.js"></script>-->
-        <!--<script type="text/javascript" src="/WishList/assets/js/main.js"></script>-->
-
-      <!--Server deploy instans end-->
-
-      <link href="/assets/css/bootstrap.css" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-      <script type="application/javascript" src="/assets/js/jquery-1.11.3.min.js"></script>
-      <script type="text/javascript" src="/assets/js/main.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script src="/assets/js/bootstrap.min.js"></script>
-
-      <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-  </head>
+    </head>
+    <body>
+    <script>
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {
+                testAPI();
+            } else if (response.status === 'not_authorized') {
+                document.getElementById('status').innerHTML = 'Please log ' +
+                        'into this app.';
+            } else {
+                document.getElementById('status').innerHTML = 'Please log ' +
+                        'into Facebook.';
+            }
+        }
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
 
-  <body>
-  <script>
-      function statusChangeCallback(response) {
-          if (response.status === 'connected') {
-              testAPI();
-          } else if (response.status === 'not_authorized') {
-              document.getElementById('status').innerHTML = 'Please log ' +
-                      'into this app.';
-          } else {
-              document.getElementById('status').innerHTML = 'Please log ' +
-                      'into Facebook.';
-          }
-      }
-    function checkLoginState() {
-          FB.getLoginStatus(function(response) {
-              statusChangeCallback(response);
-          });
-     }
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '844920485585022',
+                cookie     : true,  // enable cookies to allow the server to access
+                xfbml      : true,  // parse social plugins on this page
+                version    : 'v2.2' // use version 2.2
+            });
 
-    window.fbAsyncInit = function() {
-          FB.init({
-              appId      : '844920485585022',
-              cookie     : true,  // enable cookies to allow the server to access
-              xfbml      : true,  // parse social plugins on this page
-              version    : 'v2.2' // use version 2.2
-          });
+            FB.getLoginStatus(function(response) {
+                console.log(response);
+                statusChangeCallback(response);
+            });
 
-          FB.getLoginStatus(function(response) {
-             console.log(response);
-              statusChangeCallback(response);
-          });
+        };
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
 
-    };
-    (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+        function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function(response) {
+                console.log('Successful login for: ' + response.name);
+                console.log(response.id);
+                var data = {fb_id:response.id};
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/index/login/check",
+                    dataType:'json',
+                    data: JSON.stringify(data),
 
-    function testAPI() {
-          console.log('Welcome!  Fetching your information.... ');
-          FB.api('/me', function(response) {
-              console.log('Successful login for: ' + response.name);
-              console.log(response.id);
-              var data = {fb_id:response.id};
-              $.ajax({
-                  type: "POST",
-                  contentType: "application/json",
-                  url: "/index/login/check",
-                  dataType:'json',
-                  data: JSON.stringify(data),
+                    success:  function (json) {
+                        console.log(json);
+                        if (json.status == "new") {
+                            window.location = "/index/user";
+                        }
+                        else if (json.status == "registered")
+                        {
+                            window.location = "/index/user";
+                        }
+                    },
 
-                  success:  function (json) {
-                      console.log(json);
-                      if (json.status == "new") {
-                          window.location = "/index/user";
-                      }
-                      else if (json.status == "registered")
-                      {
-                          window.location = "/index/user";
-                      }
-                  },
+                    error: function () {
+                        console.log('error');
+                    }
 
-                  error: function () {
-                      console.log('error');
-                  }
+                });
+                document.getElementById('status').innerHTML =
+                        'Thanks for logging in, ' + response.name + '!';
+            });
+        }
+    </script>
+        <div class="top">
+            <div class="img_prop">
+                <img src="/assets/images/fishLogo@3x.png" alt="Logo" class="logo">
+            </div>
+        </div>
+         <div class="center">                 
+                <span class="logo_text">WISH LIST</span>
+                <span class="logo_text">APP</span>
+        </div>
+        <div class="bottom">
+             <div class="bottom-paper-position">
+                <!--<button  class="fb_login" onclick="checkLoginState();">-->
+                   <!--Sign in with Facebook-->
+                <!--</button>-->
+                 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> Sign in with Facebook</fb:login-button>
+                 <!--onclick="checkLoginState();"-->
+            </div>               
+        </div>
+    <div id="status"></div>
 
-              });
-              document.getElementById('status').innerHTML =
-                      'Thanks for logging in, ' + response.name + '!';
-          });
-    }
-  </script>
-  <div class="container-fluid">
-      <div class="row">
-             <h1 style="text-align:center;">WishList</h1>
-        <!--<div class="login-form">-->
-              <!--<div id="formlogin" >-->
-                <!--<input id="fb_id" type="text" name="fb_id" placeholder="Fb id" />-->
-                <!--<button id="user-submit" value="Login1">Login</button>-->
-              <!--</div>-->
-        <!--</div>-->
-      </div>
-  </div>
-          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-          <div id="status"></div>
-  </body>
+    </body>
 </html>

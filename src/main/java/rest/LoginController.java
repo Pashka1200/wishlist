@@ -5,7 +5,6 @@ import logic.Responses;
 import org.codehaus.jettison.json.JSONObject;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
