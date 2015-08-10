@@ -24,13 +24,20 @@ public class Project {
 
 
 //       UserDao userDao = new UserDao();
-        ItemDao itemDao = new ItemDao();
-        long id = 1021432071201151L;
+//        ItemDao itemDao = new ItemDao();
+//        long id = 1021432071201151L;
 //        List<Item> items = itemDao.findCleintsItemsByBuyer(id);
 //        for (Item item : items) {
 //            System.out.println(item.getTitle() + " " + item.getDescription()+ " " + item.getUrl() );
 //        }
 //
+
+//            List<Item> items = itemDao.getNotReservedItems(3333, 0);
+//            for (Item item : items) {
+//            System.out.println(item.getTitle() + " " + item.getDescription()+ " " + item.getUrl() );
+//        }
+
+
 //        System.out.println(userManipulation.checkUser(1212, "1993-07-12"));
 //
 //        InterfaseDao interfaseDao = factory.getInerfaseDao(User.class);
@@ -58,13 +65,13 @@ public class Project {
 //            System.out.println(item.getId() + " " + item.getTitle() + " " + item.getDescription());
 //        }
 //
+//        List<Item> items1 = itemDao.getItems(3333, 0);
 //        System.out.println("I want: ");
-//        List<Item> items1 = itemDao.getItems(id, 0);
 //        for (Item item : items1) {
 //            System.out.println(item.getId() + " " + item.getTitle() + " " + item.getDescription());
 //        }
 
-//        System.out.println(itemDao.addMyItem(1001, "iPhone 5S", "", "iPhone 5S"));
+//        System.out.println(itemDao.addMyItem(3333, "Samsung", "", "phone"));
 //        System.out.println(itemDao.updateMyItems(32,"ZHOPA","","zhopen","(_!_)"));
 //        itemDao.delMyItem(65);
 //        reserveDao.delBuyItem(1001,20);
@@ -72,17 +79,17 @@ public class Project {
        // InterfaseDao interfaseDaoUser = factory.getInerfaseDao(User.class);
 
 //        System.out.println(userDao.findOneByFacebookId(1003).getId());
-//        System.out.println(userDao.checkUser(3333, "12-12-1212"));
+//        System.out.println(userDao.checkUser(5, "12-12-1212"));
 //        System.out.println(userDao.updateUser(1234, 4321));
 
-//        List<Reserve> reserves = reserveDao.findReservesByFacebookId(1001);
-//        for (Reserve reserve : reserves) {
+//        List<Reserve> res : reserves) {
 //            System.out.println(reserve.getItem().getTitle());
 //        }
 //
 //        System.out.println(reserveDao.delBuyItem(1001));
-//        System.out.println(reserveDao.addBuyer(23,1003));
-//        System.out.println(reserveDao.delBuyer(23));
+//        System.out.println(reserveDao.addBuyer(25,3333));
+//        System.out.println(erves = reserveDao.findReservesByFacebookId(1001);
+//        for (Reserve reservereserveDao.delBuyer(23));
 //        System.out.println(reserveDao.checkBuyer(23));
 //        System.out.println(reserveDao.isBuyed(23, 0));
 //        System.out.println(reserveDao.checkIsBuy(23));

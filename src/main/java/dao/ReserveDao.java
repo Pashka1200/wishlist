@@ -38,6 +38,18 @@ public class ReserveDao extends ClassDao {
         return reserves;
     }
 
+    //get not reserved wish list by facebook id
+    public List<Reserve> findNotReservedByFacebookId(long facebook_id, int buy_status) throws SQLException{
+        Session session = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.getNamedQuery("findNotReservedFacebookId");
+        query.setLong("userId", userDao
+                .findOneByFacebookId(facebook_id).getId());
+        query.setLong("status", buy_status);
+        List<Reserve> reserves = query.list();
+        return reserves;
+    }
+
     //get freinds list by facebook id
     public List<Reserve> findClientByBuyer(long facebook_id, int buy_status) throws SQLException{
         Session session = null;

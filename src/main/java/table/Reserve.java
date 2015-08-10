@@ -12,7 +12,13 @@ import java.io.Serializable;
         //get items list which received or not
         @NamedQuery(name = "findReservesUserByClientFacebookId",
                 query = "SELECT r " +
-                        "FROM Reserve r WHERE r.client.id = :userId AND r.is_buy = :status"),
+                        "FROM Reserve r WHERE r.client.id = :userId AND r.is_buy = :status " +
+                        "ORDER BY id DESC"),
+
+        @NamedQuery(name = "findNotReservedFacebookId",
+                query = "SELECT r " +
+                        "FROM Reserve r WHERE r.client.id = :userId AND r.is_buy = :status " +
+                        "AND buyer_id is null ORDER BY id DESC"),
 
         //get items for present to someone
         @NamedQuery(name = "findReservesUserByBuyerFacebookId",

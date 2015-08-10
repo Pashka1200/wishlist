@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `item` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `description` blob,
@@ -50,11 +50,11 @@ DROP TABLE IF EXISTS `reserve`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reserve` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `client_id` int(11) NOT NULL,
-  `buyer_id` int(11) DEFAULT NULL,
-  `item_id` int(11) NOT NULL,
-  `is_buy` int(1) NOT NULL DEFAULT '0',
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `client_id` bigint(11) NOT NULL,
+  `buyer_id` bigint(11) DEFAULT NULL,
+  `item_id` bigint(11) NOT NULL,
+  `is_buy` bigint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `client_id` (`client_id`),
   KEY `item_id` (`item_id`),
@@ -81,8 +81,8 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fb_id` int(11) NOT NULL,
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `fb_id` bigint(11) NOT NULL,
   `date_of_birth` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
