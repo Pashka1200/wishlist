@@ -1,3 +1,7 @@
+@font-face {
+    font-family: AvenirNextLTPro-Demi;
+    src: url("/assets/fonts/AvenirNextLTPro-Cn.otf");
+}
 * {
     margin:auto 0;
     padding: 0px;
@@ -6,6 +10,16 @@ html,body {
     width:100%;
     height:auto;
     margin: auto 0;
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+    font-family: AvenirNextLTPro-Demi,sans-serif;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 9999;
+    height: 1800px;
+    text-align: center;
 }
 body {
     min-height: 500px;
@@ -19,7 +33,7 @@ body {
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.004);
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-    font-family: Lato;
+    font-family: AvenirNextLTPro-Demi;
     color: #000;
     font-size: 100%;
 }
@@ -64,6 +78,14 @@ ul {
 .top_line {
     height: 3.5em;
     width: 100%;
+    text-align: center;
+    box-shadow: 0px 0px 1px 1px #C77B11;
+    background-color: rgba(255,146,48,1);
+}
+.top_line_friend {
+    height: 7em;
+    width: 100%;
+    text-align: center;
     box-shadow: 0px 0px 1px 1px #C77B11;
     background-color: rgba(255,146,48,1);
 }
@@ -215,6 +237,70 @@ ul.menu {
     color: rgba(144, 144, 148, 1);
 }
 
+/********FRIEND LIST********/
+.friend_li {
+    width: 100%;
+    padding-top: 2%;
+    height: auto;
+}
+.friend {
+    width: 80%;
+    height: 80px;
+    margin: 0 auto;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+.img_container {
+    width: 28%;
+    float: left;
+}
+.friend_picture {
+    width: 100%;
+    max-width: 100px;
+    border-radius: 1.6em;
+}
+.text_block {
+    width: 70%;
+    height: auto;
+    float: left;
+    padding: 3.5%;
+}
+.friend_name {
+    width: 70%;
+    font-size: 1.5em;
+    float: left;
+    color: rgba(74,74,76,1);
+}
+.item_description {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1.5em;
+    float: left;
+    color: rgba(76, 74, 76, 1);
+}
+.friend_top {
+    margin: 0 auto;
+    margin-top: 2%;
+    width: 100%;
+    color: #fff;
+    font-size: 1.8em;
+}
+.search_friends {
+    -webkit-appearance: none;
+    width: 90%;
+    margin: 0 auto;
+    padding: 5px 10% 4px 10%;
+    font-size: 1.3em;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #fff;
+}
+.search_friends:focus {
+    outline: none;
+}
 
 @media only screen
 and (min-device-width: 320px)
@@ -261,6 +347,13 @@ button:focus {
     outline: none;
 }
 
+/*******OPTIONS********/
+.credits_text {
+    font-size: 1.4em;
+}
+.credits {
+    font-size: 3em;
+}
 
 
 /*======================*/
@@ -271,6 +364,7 @@ button:focus {
 }
 input {
     width: 100%;
+    text-align: center;
 }
 .description_block {
     width: 80%;
@@ -285,14 +379,6 @@ textarea {
     height: auto;
 }
 
-.container {
-    position: absolute;
-    width: 100%;
-    background-color: #fff;
-    z-index: 9999;
-    height: 1800px;
-    text-align: center;
-}
 /* ************ITEM CSS*********** */
 #item_name {
     width: 100%;

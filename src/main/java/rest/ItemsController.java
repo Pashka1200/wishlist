@@ -45,6 +45,42 @@ public class ItemsController {
     }
 
     @POST
+    @Path("getToBuyItems")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getToBuyItems(@Context HttpServletRequest request, String data)
+    {
+        try {
+            JSONObject json = new JSONObject(data);
+            long fb_id = json.getLong("fb_id");
+            int page = 0;
+            int buy_status = json.getInt("buy_status");
+            return new ItemLogic().getToBuyItemsList(page,fb_id,buy_status);
+        }
+        catch (Exception e) {
+            return Responses.JSON_RESPONSE_FALSE;
+        }
+
+    }
+
+//    @POST
+//    @Path("getReserveItems")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String getReserveItems(@Context HttpServletRequest request, String data)
+//    {
+//        try {
+//            JSONObject json = new JSONObject(data);
+//            long fb_id = json.getLong("fb_id");
+//            int page = 0;
+//            return new ItemLogic().getReserveItemsList(page,fb_id);
+//        }
+//        catch (Exception e) {
+//            return Responses.JSON_RESPONSE_FALSE;
+//        }
+//
+//    }
+
+
+    @POST
     @Path("addItem")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAddItem(@Context HttpServletRequest request, String data)

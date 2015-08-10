@@ -42,7 +42,7 @@
 
         window.fbAsyncInit = function() {
             FB.init({
-                appId      : '844920485585022',
+                appId      : '1611361999134690',
                 cookie     : true,  // enable cookies to allow the server to access
                 xfbml      : true,  // parse social plugins on this page
                 version    : 'v2.2' // use version 2.2
@@ -67,7 +67,9 @@
             FB.api('/me', function(response) {
                 console.log('Successful login for: ' + response.name);
                 console.log(response.id);
+
                 var data = {fb_id:response.id};
+
                 $.ajax({
                     type: "POST",
                     contentType: "application/json",
@@ -121,11 +123,7 @@
         </div>
         <div class="bottom">
              <div class="bottom-paper-position">
-                <!--<button  class="fb_login" onclick="checkLoginState();">-->
-                   <!--Sign in with Facebook-->
-                <!--</button>-->
                  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> Sign in with Facebook</fb:login-button>
-                 <!--onclick="checkLoginState();"-->
             </div>               
         </div>
     <div id="status"></div>

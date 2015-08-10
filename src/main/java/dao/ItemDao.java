@@ -56,6 +56,7 @@ public class ItemDao extends ClassDao {
         return items;
     }
 
+
     public Item getItem(long item_id) throws SQLException{
         return (Item) interfaseDaoForItem.get(item_id);
     }
