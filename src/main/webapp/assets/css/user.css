@@ -192,6 +192,9 @@ ul.menu {
 }
 .item_description {
     width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     font-size: 1.5em;
     float: left;
     color: rgba(76, 74, 76, 1);
