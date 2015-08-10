@@ -35,7 +35,7 @@ public class ItemsController {
             JSONObject json = new JSONObject(data);
             int page = json.getInt("page");
             long fb_id = json.getLong("fb_id");
-            int buy_status = 1;
+            int buy_status = 0;
             return new ItemLogic().getItemList(page,fb_id,buy_status);
         }
         catch (Exception e) {
@@ -56,9 +56,16 @@ public class ItemsController {
             String title = json.getString("title");
             String url = json.getString("url");
             String description = json.getString("description");
-            String picture = json.getString("picture");
-            long itemId = itemDao.addMyItem(fb_id, title, url, description, picture);
-            jsonObject.put("itemId",itemId);
+            //String picture = json.getString("picture");
+            String picture = "test hardcode";
+            if (json.has(picture)) {
+                long itemId = itemDao.addMyItem(fb_id, title, url, description, picture);
+                jsonObject.put("itemId", itemId);
+            }
+            else {
+                long itemId = itemDao.addMyItem(fb_id, title, url, description);
+                jsonObject.put("itemId", itemId);
+            }
         }
         catch (Exception e) {
             return Responses.JSON_RESPONSE_FALSE;

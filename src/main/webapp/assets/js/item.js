@@ -10,23 +10,14 @@ jQuery(function ($) {
         var item_id = pos.substring(4);
 
         $.getJSON('/index/item' + item_id + '/getItem', {}, function (json) {
-
-                var list = '<ul>';
-                    list += '<li>';
-                    list += '<div>';
-                    list += '<span id="item_name/'+json.item.id +'" class="fn_text" >' + json.item.title + '</span>';
-                    list += '<br>';
-                    list += '<span id="item_name/'+json.item.id +'" class="fn_text" >' + json.item.url + '</span>';
-                    list += '<br>';
-                    list += '<span id="item_name/'+json.item.id +'" class="fn_text" >' + json.item.description + '</span>';
-                    list += '<br>';
-                    list += '</div>';
-                    list +=  '<hr >';
-                    list += '</li>';
-                list += '</ul>';
-
-                $('.item').append($(list));
-
+               console.log(json);
+               $('#item_name').text(json.item.title);
+               $('.main').css("width","80%");
+//               $('.item_picture').attr("src",json.item.picture);
+               $('.item_picture').attr("src","/assets/images/rectangle19@3x.png");
+               $('.item_description_text').text(json.item.description);
+               $('.item_url_text').text(json.item.url);
+               $('.container').remove();
         });
     });
 
@@ -47,7 +38,7 @@ jQuery(function ($) {
 
             success:  function (json) {
                 console.log(json);
-                $("#bought").css("display","none");
+                //$("#bought").css("display","none");
             },
 
             error: function () {

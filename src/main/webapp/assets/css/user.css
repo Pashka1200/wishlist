@@ -4,82 +4,305 @@
 }
 html,body {
     width:100%;
-    height:100%;
+    height:auto;
     margin: auto 0;
 }
 body {
-    background-color: #ececec;
+    min-height: 500px;
+    padding-bottom: 50px;
+    background-color: #FFFFFF;
+    border: 1px solid #B1B1B4;
+    border-top: 0px;
+    border-bottom: 0px;
     background-position: center;
     background-size: contain;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.004);
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     font-family: Lato;
-    color:#000;
+    color: #000;
+    font-size: 100%;
 }
 header {
-    width:80%;
-    height: 30%;
+    width: 80%;
+    height: auto;
+    min-height: 140px;
     margin: 0 auto;
-    padding-top: 7%;
-
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 footer {
-    width:80%;
-    height: 70%;
+    position: fixed;
+    left: 0px;
+    bottom: -2px;
+    right: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 49px;
     margin: 0 auto;
-    padding-top: 2%;
+    background-color: rgba(76, 74, 76, 1);
+
+}
+ul {
+    width: 100%;
+    list-style-type: none;
+    display: inline-block;
 }
 .left_header {
-    width:40%;
-    height: 80%;
+    width: 40%;
+    height: auto;
     float: left;
 }
 .right_header {
     width: 60%;
-    height: 80%;
+    height: auto;
     float: left;
     padding-left: 10%;
+    padding-top: 7%;
     text-align: -webkit-left;
 }
 .top_line {
-    height: 20px;
+    height: 3.5em;
     width: 100%;
+    box-shadow: 0px 0px 1px 1px #C77B11;
     background-color: rgba(255,146,48,1);
 }
 .avatar {
-    border-radius: 77px;
-    border: 2px solid #FF9230;
-    box-shadow: 0px 0px 3px 2px #FF8201;
+    border-radius: 2.5em;
+    width: 100%;
+    /*border: 2px solid #FF9230;*/
+    box-shadow: 0px 0px 3px 2px #4C4C4C;
 }
 #fb_id {
-    width:1px;
-    height:1px;
+    width: 1px;
+    height: 1px;
+    display: none;
     opacity: 0;
 }
 #name {
-    font-size: 4em;
+    font-size: 1.8em;
     color: #FF9230;
 }
 #date {
-    font-size: 3.2em;
+    font-size: 1.6em;
     color: rgba(144,144,148,1);
 }
 .add_item {
     width: 100%;
     background-color: #FF9230;
-    border: 1px solid#FF9230;
-    height: 25%;
-    font-size: 3em;
+    border: 0px solid#FF9230;
+    font-size: 1.9em;
     color: #fff;
-}
-#logout {
-    width: 100%;
     margin-top: 10%;
+    padding: 0.64em 0em 0.64em 0em;
+}
+#add_item {
+    width: 100%;
     background-color: #FF9230;
-    border: 1px solid#FF9230;
-    height: 15%;
-    font-size: 3em;
+    border: 0px solid#FF9230;
+    font-size: 1.9em;
     color: #fff;
+    margin-top: 10%;
+    padding: 0.64em 0em 0.64em 0em;
 }
   /*facebok end */
+/* Portrait iPhone4*/
+#logout {
+    width: 100%;
+    background-color: #FF9230;
+    border: 0px solid#FF9230;
+    font-size: 1.9em;
+    color: #fff;
+    margin-top: 10%;
+    padding: 0.64em 0em 0.64em 0em;
+}
+.center_line {
+    width: 100%;
+    border-top: 1px solid rgba(144, 144, 148, 0.7);
+}
+
+/*Menu css*/
+.main {
+    padding-bottom: 10%;
+    margin: 0 auto;
+    height: auto;
+}
+
+li.tab_menu {
+    display: inline-table;
+    width: 23%;
+    text-align: center;
+}
+ul.menu {
+    /*display: -webkit-inline-box;*/
+    width: 100%;
+    /*display: box;*/
+    list-style-type: none;
+    height: 49px;
+    margin: 0 auto;
+    padding: 0px;
+}
+.menu_img {
+    width: 100%;
+    max-width: 22px;
+    text-align: center;
+    padding-top: 5%;
+}
+.menu_text {
+    float: left;
+    width: 98%;
+    color: #fff;
+    padding-top: 3%;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/*Items list*/
+.item_li {
+    width: 100%;
+    padding-top: 2%;
+    height: auto;
+}
+.item {
+    width: 80%;
+    height: 80px;
+    margin: 0 auto;
+    margin-bottom: 5%;
+}
+.img_container {
+    width: 28%;
+    float: left;
+}
+.item_picture {
+    width: 100%;
+    max-width: 100px;
+    border-radius: 1.6em;
+}
+.text_block {
+    width: 70%;
+    height: auto;
+    float: left;
+    padding: 3.5%;
+}
+.item_title {
+    width: 70%;
+    font-size: 2.5em;
+    float: left;
+    color: #000;
+}
+.item_description {
+    width: 100%;
+    font-size: 1.5em;
+    float: left;
+    color: rgba(76, 74, 76, 1);
+}
+.item_description_page{
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 100%;
+    font-size: 2.7em;
+    float: left;
+    color: rgba(76, 74, 76, 1);
+}
+.item_description_text {
+    width: 100%;
+    font-size: 1.6em;
+    word-wrap: break-word;
+    float: left;
+    color: rgba(144, 144, 148, 1);
+}
+
+
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+
+}
+
+.ripple{
+    overflow:hidden;
+    position: relative;
+    box-sizing: border-box;
+    transform: translate3d(0, 0, 0);
+    user-select: none;
+}
+
+.ripple-effect{
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    user-select: none;
+    pointer-events: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0.6;
+    transform: translate3d(-50%,-50%,0);
+}
+button {
+    transition: box-shadow .4s;
+
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.8);
+}
+
+button:hover {
+    box-shadow: 0px 1px 4px transparent;
+ }
+
+button:active {
+     transition: .2s;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.8);
+ }
+button:focus {
+    outline: none;
+}
+
+
+
+/*======================*/
+/*ADD WISH BLOCK*/
+
+.block_add_title  {
+  font-size: 1.6em;
+}
+input {
+    width: 100%;
+}
+.description_block {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 10%;
+    font-size: 1.4em;
+}
+textarea {
+    width: 100%;
+    min-height: 150px;
+    height: auto;
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    z-index: 9999;
+    height: 1800px;
+    text-align: center;
+}
+/* ************ITEM CSS*********** */
+#item_name {
+    width: 100%;
+    color: rgba( 255 ,146 ,48, 1);
+    font-size: 3em;
+    margin-top:-15px;
+    height: 100%;
+}
+.item_url_text {
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 100%;
+    font-size: 2.2em;
+    float: left;
+    color: rgb(68, 67, 68);
+}
