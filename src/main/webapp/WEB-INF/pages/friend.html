@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>User page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/css/user.css">
+    <script type="application/javascript" src="/assets/js/jquery-1.11.3.min.js"></script>
+    <script src="/assets/js/jquery.cookie.js"></script>
+    <script src="/assets/js/jquery.nicescroll.js"></script>
+    <script src="/assets/js/friend.js"></script>
+    <script src="/assets/js/helpers.js"></script>
+</head>
+<body>
+<div class="container">
+    <img src="/assets/images/loadwish.gif" style="margin-top: 50%;width: 40%;">
+    <h1 style="color: rgba(220, 220, 220, 0.93);" >WishList</h1>
+</div>
+    <div class="top_line"></div>
+        <header>
+            <div class="left_header">
+                <img src="" class="avatar">
+            </div>
+            <div class="right_header">
+                <span id="name"></span>
+                <span id="date"></span>
+            </div>
+            <button class="add_item ripple">Add Wish</button>
+        </header>
+        <div class="center_line"></div>
+        <div class="main">
+        </div>
+    <footer>
+        <ul class="menu">
+            <li class="tab_menu home"><img src="/assets/images/home@3x.png" class="menu_img"  alt="Home"/><span class="menu_text" style="color:#ff9230">Home</span></li>
+            <li class="tab_menu friends"><img src="/assets/images/friends@3x_white.png" class="menu_img" alt="Friends"/><span class="menu_text">Friends</span></li>
+            <li class="tab_menu tobuy"><img src="/assets/images/toBuy@3x_white.png" class="menu_img" alt="toBuy"/><span class="menu_text">To Buy</span></li>
+            <li class="tab_menu options"><img src="/assets/images/options@3x_white.png" class="menu_img" alt="Options"/><span class="menu_text">Options</span></li>
+        </ul>
+    </footer>
+    <span id="fb_id"></span>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1611361999134690',
+            cookie     : true,  // enable cookies to allow the server to access
+            xfbml      : true,  // parse social plugins on this page
+            version    : 'v2.2' // use version 2.2
+        });
+
+        FB.getLoginStatus(function(response) {
+            console.log(response);
+
+            var url = window.location.href;
+            var pos = url.substring(url.lastIndexOf('/') + 1);
+            var friend_id = pos.substring(6);
+            console.log(friend_id);
+
+            FB.api('/' + friend_id , function(response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById("name").innerText = response.name;
+                document.getElementById("date").innerText = "13.12.1995";  //hardcode dateofbirthday
+
+            });
+            FB.api(
+                    "/" + friend_id +"/picture?width=250&height=250",
+                    function (response) {
+                        if (response && !response.error) {
+                            console.log(response);
+                            $(".avatar").attr("src",response.data.url);
+                            $('.container').remove();
+                        }
+                    }
+            );
+        });
+    };
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+
+
+</script>
+</body>
+</html>

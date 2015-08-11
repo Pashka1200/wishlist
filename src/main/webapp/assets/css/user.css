@@ -267,7 +267,7 @@ ul.menu {
 }
 .friend_name {
     width: 70%;
-    font-size: 1.5em;
+    font-size: 1.8em;
     float: left;
     color: rgba(74,74,76,1);
 }
@@ -391,7 +391,11 @@ textarea {
     margin-top: 10%;
     margin-bottom: 5%;
     width: 100%;
-    font-size: 2.2em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 2em;
+    text-decoration: underline;
     float: left;
     color: rgb(68, 67, 68);
 }

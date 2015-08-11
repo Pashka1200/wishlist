@@ -26,8 +26,8 @@ jQuery(function ($) {
                     list += '<img src="https://graph.facebook.com/'+ paramId.data[i].id+'/picture?width=250&height=250" id="'+ paramId.data[i].id +'" class="friend_picture" >';
                     list += '</div>';
                     list += '<div class="text_block">';
-                    list += '<a href="/index/item' + paramId.data[i].id + '" >'; //style="float:left,width:70%"
-                    list += '<span id="item_name/' + paramId.data[i].id + '" class="friend_name" >' + paramId.data[i].name + '</span>';
+                    list += '<a href="/index/friend' + paramId.data[i].id + '" >'; //style="float:left,width:70%"
+                    list += '<span id="friend_name/' + paramId.data[i].id + '" class="friend_name" >' + paramId.data[i].name + '</span>';
                     list += '</a>';
                     list += '</div>';
                     list += '</div>';

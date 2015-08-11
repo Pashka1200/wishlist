@@ -63,6 +63,12 @@
         }(document, 'script', 'facebook-jssdk'));
 
         function testAPI() {
+            FB.login(function(response) {
+                console.log(response);
+            }, {
+                scope: 'user_friends',
+                return_scopes: true
+            });
             console.log('Welcome!  Fetching your information.... ');
             FB.api('/me', function(response) {
                 console.log('Successful login for: ' + response.name);
@@ -123,7 +129,7 @@
         </div>
         <div class="bottom">
              <div class="bottom-paper-position">
-                 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> Sign in with Facebook</fb:login-button>
+                 <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();"> Sign in with Facebook</fb:login-button>
             </div>               
         </div>
     <div id="status"></div>
