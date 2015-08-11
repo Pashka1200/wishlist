@@ -46,16 +46,16 @@ public class ItemDao extends ClassDao {
     }
 
 
-    //find items for friends by personal id
-    public List<Item> findCleintsItemsByBuyer(long facebook_id, int buy_status) throws SQLException {
-        List<Item> items = new ArrayList<Item>();
-        List<Reserve> reserves = new ReserveDao()
-                .findClientByBuyer(facebook_id, buy_status);
-        for (Reserve reserve : reserves) {
-            items.add(reserve.getItem());
-        }
-        return items;
-    }
+//    //find items for friends by personal id
+//    public List<Item> findCleintsItemsByBuyer(long facebook_id, int buy_status) throws SQLException {
+//        List<Item> items = new ArrayList<Item>();
+//        List<Reserve> reserves = new ReserveDao()
+//                .findClientByBuyer(facebook_id, buy_status);
+//        for (Reserve reserve : reserves) {
+//            items.add(reserve.getItem());
+//        }
+//        return items;
+//    }
 
     //get bought list by facebook id
     public List<Item> getBoughItemtList(long facebook_id, int buy_status) throws SQLException {
