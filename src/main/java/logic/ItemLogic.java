@@ -98,17 +98,20 @@ public class ItemLogic {
             int size = userItemMap.size();
             int startPosition = page * 10;
             int i;
+            Map.Entry entry;
 
             if (startPosition < size && size > 10) {
                 if (size - startPosition > 10) {
                     for (i = startPosition; i < startPosition + 10; i++) {
                         json = new JSONObject();
-                        item = list.get(i);
+                        entry = (Map.Entry) userItemMap.entrySet();
+                        item = (Item) entry.getKey();
                         json.put("id", item.getId());
                         json.put("title", item.getTitle());
                         json.put("url", item.getUrl());
                         json.put("description", item.getDescription());
                         json.put("picture",item.getPicture());
+                        user = (User) entry.getValue();
                         json.put("facebook_id", user.getFacebookId());
                         jsonObject1.put("isEnd", false);
                         jsonObject.put(json);
@@ -117,12 +120,14 @@ public class ItemLogic {
                 } else if (size - startPosition < 10) {
                     for (i = startPosition; i < size; i++) {
                         json = new JSONObject();
-                        item = list.get(i);
+                        entry = (Map.Entry) userItemMap.entrySet();
+                        item = (Item) entry.getKey();
                         json.put("id", item.getId());
                         json.put("title", item.getTitle());
                         json.put("url", item.getUrl());
                         json.put("description", item.getDescription());
                         json.put("picture",item.getPicture());
+                        user = (User) entry.getValue();
                         json.put("facebook_id", user.getFacebookId());
                         jsonObject1.put("isEnd", false);
                         jsonObject.put(json);
@@ -134,12 +139,14 @@ public class ItemLogic {
             {
                 for (i = 0; i < size; i++) {
                     json = new JSONObject();
-                    item = list.get(i);
+                    entry = (Map.Entry) userItemMap.entrySet();
+                    item = (Item) entry.getKey();
                     json.put("id", item.getId());
                     json.put("title", item.getTitle());
                     json.put("url", item.getUrl());
                     json.put("description", item.getDescription());
                     json.put("picture",item.getPicture());
+                    user = (User) entry.getValue();
                     json.put("facebook_id", user.getFacebookId());
                     jsonObject1.put("isEnd", false);
                     jsonObject.put(json);
