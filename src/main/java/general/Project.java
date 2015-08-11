@@ -24,9 +24,11 @@ public class Project {
 
 
 //       UserDao userDao = new UserDao();
+//        System.out.println(userDao.updateUser(3333, "12-12-1212"));
+
 //        ItemDao itemDao = new ItemDao();
 //        long id = 1021432071201151L;
-//        List<Item> items = itemDao.findCleintsItemsByBuyer(id);
+//        List<Item> items = itemDao.findCleintsItemsByBuyer(3333, 0);
 //        for (Item item : items) {
 //            System.out.println(item.getTitle() + " " + item.getDescription()+ " " + item.getUrl() );
 //        }
@@ -53,7 +55,7 @@ public class Project {
 //            System.out.println(item.getTitle());
 //        }
 
-//          ReserveDao reserveDao = new ReserveDao();
+          ReserveDao reserveDao = new ReserveDao();
 //        long id = 858306037591360L;
 //        List<Reserve> reserves = reserveDao.findClientByBuyer(id);
 //                for(Reserve reserve : reserves) {
@@ -72,9 +74,9 @@ public class Project {
 //        }
 
 //        System.out.println(itemDao.addMyItem(3333, "Samsung", "", "phone"));
-//        System.out.println(itemDao.updateMyItems(32,"ZHOPA","","zhopen","(_!_)"));
-//        itemDao.delMyItem(65);
-//        reserveDao.delBuyItem(1001,20);
+//        System.out.println(itemDao.updateMyItems(27,"ZHOPA","","zhopen","(_!_)"));
+//        itemDao.delMyItem(27);
+        reserveDao.delBuyItem(26);
 
        // InterfaseDao interfaseDaoUser = factory.getInerfaseDao(User.class);
 

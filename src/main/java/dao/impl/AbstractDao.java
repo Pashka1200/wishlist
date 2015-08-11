@@ -12,13 +12,16 @@ import java.util.List;
  */
 public abstract class AbstractDao<T> implements InterfaseDao<T> {
 
+    static protected Session session = null;
+
     private Class class1;
+
     AbstractDao(Class<T> class1) {
         this.class1 = class1;
     }
 
     public void add(T t) throws SQLException {
-        Session session = null;
+//        Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
@@ -32,7 +35,7 @@ public abstract class AbstractDao<T> implements InterfaseDao<T> {
     }
 
     public void delete(T t) throws SQLException {
-        Session session = null;
+//        Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
@@ -48,7 +51,7 @@ public abstract class AbstractDao<T> implements InterfaseDao<T> {
 
     public T get(long id) throws SQLException {
         T result = null;
-        Session session = null;
+//        Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             result = (T) session.get(class1, id);
@@ -63,7 +66,7 @@ public abstract class AbstractDao<T> implements InterfaseDao<T> {
     public List<T> getAll() throws SQLException {
         List<T> units = null;
 
-        Session session = null;
+//        Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             units = session.createCriteria(class1).list();
@@ -77,7 +80,7 @@ public abstract class AbstractDao<T> implements InterfaseDao<T> {
     }
 
     public void update(T t) throws SQLException {
-        Session session = null;
+//        Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();

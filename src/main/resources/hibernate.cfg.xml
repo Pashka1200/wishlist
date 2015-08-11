@@ -10,9 +10,9 @@
         <property name="hibernate.connection.url">jdbc:mysql://sql2.freesqldatabase.com:3306/sql286590</property>
         <property name="hibernate.connection.username">sql286590</property>
         <property name="hibernate.connection.password">jX1*xJ7*</property>
-        <!--<property name="hibernate.connection.url">jdbc:mysql://192.168.10.189:3306/wishlist</property>-->
-        <!--<property name="hibernate.connection.username">root</property>-->
-        <!--<property name="hibernate.connection.password"></property>-->
+        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/wishlist</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>-->
 
         
         <mapping class ="table.User" />
