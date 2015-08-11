@@ -5,28 +5,51 @@ import dao.ItemDao;
 import dao.ReserveDao;
 import dao.UserDao;
 import dao.impl.ClassDao;
+import logic.ReserveLogic;
 import table.Item;
 import table.Reserve;
 import table.User;
 
+import javax.jws.soap.SOAPBinding;
 import javax.management.Query;
 import javax.naming.InsufficientResourcesException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by pavlo on 14.07.15.
  */
+
+
 public class Project {
+    static User userKey;
+    static Item itemKey;
     static Factory factory = Factory.getInstance();
 
     public static void main(String[] args) throws SQLException {
 
 
-//       UserDao userDao = new UserDao();
+       UserDao userDao = new UserDao();
+//        System.out.println(userDao.updateUser(3333, "12-12-1212"));
+
 //        ItemDao itemDao = new ItemDao();
+
+
+        ReserveLogic reserveLogic = new ReserveLogic();
+        Map<Item, User> userItemMap = reserveLogic.findCleintsItemsByBuyer(4444,0);
+        for (Map.Entry entry: userItemMap.entrySet()) {
+            userKey = (User) entry.getValue();
+            itemKey = (Item) entry.getKey();
+            System.out.println(userKey.getFacebookId() + " " + itemKey.getTitle());
+        }
+
+
+
+
 //        long id = 1021432071201151L;
-//        List<Item> items = itemDao.findCleintsItemsByBuyer(id);
+//        List<Item> items = itemDao.findCleintsItemsByBuyer(3333, 0);
 //        for (Item item : items) {
 //            System.out.println(item.getTitle() + " " + item.getDescription()+ " " + item.getUrl() );
 //        }
@@ -71,10 +94,10 @@ public class Project {
 //            System.out.println(item.getId() + " " + item.getTitle() + " " + item.getDescription());
 //        }
 
-//        System.out.println(itemDao.addMyItem(3333, "Samsung", "", "phone"));
-//        System.out.println(itemDao.updateMyItems(32,"ZHOPA","","zhopen","(_!_)"));
-//        itemDao.delMyItem(65);
-//        reserveDao.delBuyItem(1001,20);
+//        System.out.println(itemDao.addMyItem(4444, "Aaaaaa", "", "aaaa"));
+//        System.out.println(itemDao.updateMyItems(27,"ZHOPA","","zhopen","(_!_)"));
+//        itemDao.delMyItem(27);
+//        reserveDao.delBuyItem(26);
 
        // InterfaseDao interfaseDaoUser = factory.getInerfaseDao(User.class);
 

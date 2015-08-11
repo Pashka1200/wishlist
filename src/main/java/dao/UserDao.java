@@ -3,7 +3,6 @@ package dao;
 import dao.impl.ClassDao;
 import general.Factory;
 import org.hibernate.Query;
-import org.hibernate.Session;
 import table.User;
 import util.HibernateUtil;
 
@@ -20,6 +19,7 @@ import java.sql.SQLException;
 @Named
 public class UserDao extends ClassDao {
     static Factory factory = Factory.getInstance();
+//    static Session session = null;
 
     public UserDao() {
         super(User.class);
@@ -30,12 +30,18 @@ public class UserDao extends ClassDao {
 
     //find user by facebook id
     public User findOneByFacebookId(long facebook_id) throws SQLException{
-        Session session = null;
+//        Session session = null;
+        User user = new User();
+        try {
         session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.getNamedQuery("findOneUserByFacebookId");
         query.setLong("facebook_id", facebook_id);
-        User user = (User) query.uniqueResult();
-
+        user = (User) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if((session != null) && (session.isOpen())) session.close();
+        }
         return user;
     }
 
@@ -53,6 +59,19 @@ public class UserDao extends ClassDao {
         } else {
             return "registered";
         }
+    }
+
+
+     //update users in table user by facebook id
+    public String updateUser(long facebook_id, String date_of_birth) throws SQLException{
+
+        User newUser = new User();
+        newUser.setFacebookId(facebook_id);
+        newUser.setDate_of_birth(date_of_birth);
+        newUser.setId(findOneByFacebookId(facebook_id).getId());
+            interfaseDao.update(newUser);
+            return "updated";
+
     }
 
     //delete user by facebook id

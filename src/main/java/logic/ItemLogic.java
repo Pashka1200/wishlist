@@ -4,8 +4,11 @@ package logic;
 import dao.ItemDao;
         import org.codehaus.jettison.json.JSONObject;
         import table.Item;
+import table.User;
 
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by admin on 31.07.2015.
@@ -13,10 +16,12 @@ import dao.ItemDao;
 public class ItemLogic {
 
     private List<Item> list;
+    private Map<Item, User> userItemMap;
     private org.codehaus.jettison.json.JSONArray jsonObject = new org.codehaus.jettison.json.JSONArray();
     private JSONObject json;
     private JSONObject jsonObject1 = new JSONObject();
     private Item item;
+    private User user;
 
     public String getItemList(int page, long facebook_id, int buy_status) {
         try {
@@ -85,7 +90,7 @@ public class ItemLogic {
 
     public String getToBuyItemsList(int page, long facebook_id, int buy_status) {
         try {
-            list = new ItemDao().findCleintsItemsByBuyer(facebook_id, buy_status);
+            userItemMap = new ReserveLogic().findCleintsItemsByBuyer(facebook_id, buy_status);
 
             if (list.isEmpty())
             {
@@ -105,6 +110,7 @@ public class ItemLogic {
                         json.put("url", item.getUrl());
                         json.put("description", item.getDescription());
                         json.put("picture",item.getPicture());
+                        json.put("facebook_id", user.getFacebookId());
                         jsonObject1.put("isEnd", false);
                         jsonObject.put(json);
                         json = null;
@@ -118,6 +124,7 @@ public class ItemLogic {
                         json.put("url", item.getUrl());
                         json.put("description", item.getDescription());
                         json.put("picture",item.getPicture());
+                        json.put("facebook_id", user.getFacebookId());
                         jsonObject1.put("isEnd", false);
                         jsonObject.put(json);
                         json = null;
@@ -134,6 +141,7 @@ public class ItemLogic {
                     json.put("url", item.getUrl());
                     json.put("description", item.getDescription());
                     json.put("picture",item.getPicture());
+                    json.put("facebook_id", user.getFacebookId());
                     jsonObject1.put("isEnd", false);
                     jsonObject.put(json);
                     json = null;
