@@ -42,16 +42,17 @@ jQuery(function ($) {
 
     $('body').on('click', "#buy_item", function () {
 
+        var fb_id = $.cookie("fb_id");
         var url = window.location.href;
         var pos = url.substring(url.lastIndexOf('/') + 1);
         var item_id = pos.substring(5);
-        var postData = {item_id: item_id,buy_status:1};
+        var postData = {buyer_id:fb_id,item_id: item_id};
         console.log(postData);
 
         $.ajax({
             type: "POST",
             contentType: "application/json",
-            url: "/index/reserve/isBought",
+            url: "/index/reserve/addBuyer",
             dataType:'json',
             data: JSON.stringify(postData),
 
@@ -66,5 +67,59 @@ jQuery(function ($) {
 
         });
     });
+
+
+    $('body').on('click', "#update", function () {
+
+        var title = $("#item_name").text();
+        var picture = $(".item_picture").attr("src");
+        var url = $(".item_url_text").text();
+        var description = $(".item_description_text").text();
+
+        $("#item_name").replaceWith('<input type="text" value="' + title +'" >');
+        $("header").css("min-height","150px");
+        $(".main").empty().append("<div class='description_block'><label>Description:</label>" +
+            "<textarea id='description' placeholder='Describe your wish here!'>" + description + "</textarea><br>" +
+            "<label>URL:</label><input type='text' id='url' value='"+ url +"' placeholder='Add url for your Wish' style='margin-top:20px;'></div>" +
+            "<button id='add_item'>Update Your Wish</button>");
+
+    });
+
+
+
+
+    $('body').on('click', "#update_item", function () {
+
+        var url1 = window.location.href;
+        var pos = url1.substring(url1.lastIndexOf('/') + 1);
+        var item_id = pos.substring(4);
+        var title = $("#item_name").text();
+        var picture = $(".item_picture").attr("src");
+        var url = $(".item_url_text").text();
+        var description = $(".item_description_text").text();
+        var postData = {item_id: item_id,title:title,url:url,description:description,picture:picture};
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/index/items/updateItem",
+            dataType:'json',
+            data: JSON.stringify(postData),
+
+            success:  function (json) {
+                if (json == ("true"))
+                location.reload();
+                else {
+                    console.log("error");
+                }
+            },
+
+            error: function () {
+                console.log('error');
+            }
+
+        });
+    });
+
 
 });

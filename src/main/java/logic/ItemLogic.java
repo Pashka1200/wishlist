@@ -2,11 +2,10 @@
 package logic;
 
 import dao.ItemDao;
-        import org.codehaus.jettison.json.JSONObject;
-        import table.Item;
+import org.codehaus.jettison.json.JSONObject;
+import table.Item;
 import table.User;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -92,11 +91,11 @@ public class ItemLogic {
         try {
             userItemMap = new ReserveLogic().findCleintsItemsByBuyer(facebook_id, buy_status);
 
-            if (list.isEmpty())
+            if (userItemMap.isEmpty())
             {
                 return Responses.JSON_RESPONSE_FALSE;
             }
-            int size = list.size();
+            int size = userItemMap.size();
             int startPosition = page * 10;
             int i;
 

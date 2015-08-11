@@ -9,7 +9,7 @@ jQuery(function ($) {
 
             var fb_id = $.cookie("fb_id");
             var page  = 0;
-            var status = 1;
+            var status = 0;
             var postData = {fb_id:fb_id,page:page,buy_status:status};
             $.ajax({
                 type: "POST",
