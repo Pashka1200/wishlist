@@ -6,7 +6,6 @@ jQuery(function ($) {
 
 //      *******MAIN FUNCTIONS*******
     $( document ).ready(function() {
-
             var fb_id = $.cookie("fb_id");
             var page  = 0;
             var postData = {fb_id:fb_id,page:page};
@@ -41,12 +40,11 @@ jQuery(function ($) {
                     }
                     list += '</ul>';
                     $('.main').empty().append($(list));
-                    $('.container').remove();
-
                 },
 
                 error: function () {
                     console.log('error');
+
                 }
 
             });

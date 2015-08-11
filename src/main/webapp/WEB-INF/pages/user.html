@@ -65,6 +65,7 @@
                         if (response && !response.error) {
                             console.log(response);
                             $(".avatar").attr("src",response.data.url);
+                            $('.container').remove();
                         }
                     }
             );

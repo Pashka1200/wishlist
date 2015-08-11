@@ -17,6 +17,7 @@ jQuery(function ($) {
                $('.item_picture').attr("src","/assets/images/rectangle19@3x.png");
                $('.item_description_text').text(json.item.description);
                $('.item_url_text').text(json.item.url);
+               $('#item_url_text').attr("href",json.item.url);
                $('.container').remove();
         });
     });
